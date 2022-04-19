@@ -6,20 +6,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CalendarView
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.fitnessapp.R
+import com.example.fitnessapp.databinding.FragmentScheduleBinding
 import makeToast
 
 class ScheduleFragment : Fragment() {
 
-    lateinit var viewModel:ScheduleViewModel
-
+//    lateinit var viewModel:ScheduleViewModel
+    private val viewModel: ScheduleViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val root = inflater.inflate(R.layout.fragment_schedule, container, false)
-        viewModel = ViewModelProvider(this).get(ScheduleViewModel::class.java)
-        return root
+    ): View {
+        val binding = FragmentScheduleBinding.inflate(inflater,container,false)
+//        viewModel = ViewModelProvider(this).get(ScheduleViewModel::class.java)
+        return binding.root
     }
 }
