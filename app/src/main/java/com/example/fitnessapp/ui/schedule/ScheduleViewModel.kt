@@ -13,8 +13,10 @@ import kotlin.collections.ArrayList
 class ScheduleViewModel:ViewModel() {
 
     val datesData: MutableLiveData<MutableList<CalendarDay>> = MutableLiveData()
+    val isAddNoticeVisible: MutableLiveData<Boolean> = MutableLiveData()
 
     init {
+        isAddNoticeVisible.value = false
         datesData.value = getDates("20.01.2022","25.01.2022")
     }
 

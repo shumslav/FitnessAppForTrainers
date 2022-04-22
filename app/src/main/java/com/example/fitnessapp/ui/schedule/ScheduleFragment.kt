@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.CalendarView
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.fitnessapp.R
 import com.example.fitnessapp.databinding.FragmentScheduleBinding
@@ -22,8 +23,16 @@ class ScheduleFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val binding = FragmentScheduleBinding.inflate(inflater,container,false)
-        val daysAdapter = DaysAdapter(viewModel.datesData)
+        val daysAdapter = DaysAdapter(viewModel, this)
         binding.recyclerDays.adapter= daysAdapter
+        viewModel.isAddNoticeVisible.observe(viewLifecycleOwner,object: Observer<Boolean>{
+            override fun onChanged(t: Boolean?) {
+                if (t == true)
+                    binding.addNotice.visibility = View.VISIBLE
+                else
+                    binding.addNotice.visibility = View.GONE
+            }
+        })
 //        viewModel = ViewModelProvider(this).get(ScheduleViewModel::class.java)
         return binding.root
     }
