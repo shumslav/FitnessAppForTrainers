@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.fitnessapp.R
 import com.example.fitnessapp.databinding.FragmentScheduleBinding
+import com.example.fitnessapp.ui.schedule.adapters.DaysAdapter
 import makeToast
 
 class ScheduleFragment : Fragment() {
@@ -21,6 +22,8 @@ class ScheduleFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val binding = FragmentScheduleBinding.inflate(inflater,container,false)
+        val daysAdapter = DaysAdapter(viewModel.datesData)
+        binding.recyclerDays.adapter= daysAdapter
 //        viewModel = ViewModelProvider(this).get(ScheduleViewModel::class.java)
         return binding.root
     }
