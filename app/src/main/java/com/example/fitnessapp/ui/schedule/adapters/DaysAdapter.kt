@@ -1,5 +1,6 @@
 package com.example.fitnessapp.ui.schedule.adapters
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import com.example.fitnessapp.ui.schedule.ScheduleViewModel
 import com.example.fitnessapp.models.CalendarDay
 import com.google.android.material.card.MaterialCardView
 
+@SuppressLint("NotifyDataSetChanged")
 class DaysAdapter(val viewmodel: ScheduleViewModel, lifecycleOwner: LifecycleOwner) :
     RecyclerView.Adapter<DaysAdapter.DayCardHolder>() {
 
@@ -23,7 +25,7 @@ class DaysAdapter(val viewmodel: ScheduleViewModel, lifecycleOwner: LifecycleOwn
         ) { t ->
             Log.i("MyError", "UpdateDates")
             lastPosition = null
-            this@DaysAdapter.notifyItemRangeChanged(0, (t?.size?.minus(1)) ?: 0)
+            this@DaysAdapter.notifyDataSetChanged()
         }
     }
 
