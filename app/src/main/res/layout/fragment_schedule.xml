@@ -37,7 +37,7 @@
                 android:layout_height="70dp"
                 android:layout_toEndOf="@id/recycler_days"
                 android:layout_below="@id/recycler_notes"
-                app:strokeColor="#5A5A5A"
+                app:strokeColor="#9E9D9D"
                 app:strokeWidth="1dp">
 
                 <ImageView

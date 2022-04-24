@@ -3,14 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="calendarDay"
+            type="com.example.fitnessapp.models.CalendarDay" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_day"
         android:layout_width="110dp"
         android:layout_height="wrap_content"
-        app:strokeColor="#5A5A5A"
+        app:strokeColor="#9E9D9D"
         app:strokeWidth="1dp">
 
         <RelativeLayout
@@ -22,7 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="MON"
+                android:text="@{calendarDay.month}"
                 android:textSize="35sp" />
 
 
@@ -32,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/month"
                 android:gravity="center"
-                android:text="1"
+                android:text="@{calendarDay.day}"
                 android:textSize="65dp" />
 
         </RelativeLayout>

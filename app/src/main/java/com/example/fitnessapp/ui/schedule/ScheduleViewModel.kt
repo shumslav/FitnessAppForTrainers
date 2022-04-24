@@ -1,23 +1,23 @@
 package com.example.fitnessapp.ui.schedule
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.fitnessapp.ui.schedule.Models.CalendarDay
+import com.example.fitnessapp.models.CalendarDay
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 class ScheduleViewModel:ViewModel() {
 
     val datesData: MutableLiveData<MutableList<CalendarDay>> = MutableLiveData()
     val isAddNoticeVisible: MutableLiveData<Boolean> = MutableLiveData()
+    val lastPickedDay: MutableLiveData<CalendarDay> = MutableLiveData()
 
     init {
         isAddNoticeVisible.value = false
         datesData.value = getDates("20.01.2022","25.01.2022")
+        Log.i("MyError", "CreateDates")
     }
 
     private fun getDates(fromDate:String,toDate:String):MutableList<CalendarDay>{
