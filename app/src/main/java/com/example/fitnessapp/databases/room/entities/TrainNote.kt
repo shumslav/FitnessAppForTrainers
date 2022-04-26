@@ -1,8 +1,8 @@
-package com.example.fitnessapp.database.room.entities
+package com.example.fitnessapp.databases.room.entities
 
 import androidx.room.*
-import com.example.fitnessapp.database.models.Exercise
-import com.example.fitnessapp.database.room.typeconventers.ExercisesTypeConverter
+import com.example.fitnessapp.databases.models.Exercise
+import com.example.fitnessapp.databases.room.typeconventers.ExercisesTypeConverter
 
 @Entity(tableName = "train_notes")
 data class TrainNote(

@@ -1,4 +1,4 @@
-package com.example.fitnessapp.database.models
+package com.example.fitnessapp.databases.models
 
 data class Exercise(
     val name:String,

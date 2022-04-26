@@ -18,7 +18,6 @@ import makeToast
 
 class ScheduleFragment : Fragment() {
 
-//    lateinit var viewModel:ScheduleViewModel
     private val viewModel: ScheduleViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,14 +27,15 @@ class ScheduleFragment : Fragment() {
         val daysAdapter = DaysAdapter(viewModel, this)
         binding.recyclerDays.adapter= daysAdapter
         binding.recyclerDays.layoutManager = LinearLayoutManager(requireContext())
-        viewModel.isAddNoticeVisible.observe(viewLifecycleOwner,object: Observer<Boolean>{
-            override fun onChanged(t: Boolean?) {
-                if (t == true)
-                    binding.addNotice.visibility = View.VISIBLE
-                else
-                    binding.addNotice.visibility = View.GONE
-            }
-        })
+        viewModel.isAddNoticeVisible.observe(viewLifecycleOwner) { t ->
+            if (t == true)
+                binding.addNotice.visibility = View.VISIBLE
+            else
+                binding.addNotice.visibility = View.GONE
+        }
+        viewModel.lastPickedDay.observe(viewLifecycleOwner) {
+            viewModel.getTrainNotes()
+        }
         return binding.root
     }
 }

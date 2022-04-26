@@ -1,7 +1,8 @@
-package com.example.fitnessapp.database.room.dao
+package com.example.fitnessapp.databases.room.dao
 
 import androidx.room.*
-import com.example.fitnessapp.database.room.entities.TrainNote
+import com.example.fitnessapp.databases.room.entities.TrainNote
+import io.reactivex.rxjava3.core.Maybe
 
 @Dao
 interface TrainNoteDao {
@@ -12,5 +13,5 @@ interface TrainNoteDao {
     fun deleteTrainNote(trainNote: TrainNote)
 
     @Query("SELECT * FROM train_notes WHERE date == :date")
-    fun getTrainNotesByDate(date:String):List<TrainNote>
+    fun getTrainNotesByDate(date:String): Maybe<List<TrainNote>>
 }

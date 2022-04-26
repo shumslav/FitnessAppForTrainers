@@ -27,6 +27,6 @@ class CalendarDay(val day: String, val weekDay:String, val month: String,val yea
 
     val dateString:String
     get() {
-        return "$day.$"
+        return "$day.$month.$year"
     }
 }

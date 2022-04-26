@@ -1,7 +1,7 @@
-package com.example.fitnessapp.database.room.typeconventers
+package com.example.fitnessapp.databases.room.typeconventers
 
 import androidx.room.TypeConverter
-import com.example.fitnessapp.database.models.Exercise
+import com.example.fitnessapp.databases.models.Exercise
 
 class ExercisesTypeConverter {
 
