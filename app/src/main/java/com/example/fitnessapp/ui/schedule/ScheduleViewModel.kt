@@ -1,6 +1,8 @@
 package com.example.fitnessapp.ui.schedule
 
+import android.app.Application
 import android.util.Log
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.fitnessapp.models.CalendarDay
@@ -8,7 +10,7 @@ import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ScheduleViewModel:ViewModel() {
+class ScheduleViewModel(application: Application):AndroidViewModel(application) {
 
     val datesData: MutableLiveData<MutableList<CalendarDay>> = MutableLiveData()
     val isAddNoticeVisible: MutableLiveData<Boolean> = MutableLiveData()
@@ -16,7 +18,7 @@ class ScheduleViewModel:ViewModel() {
 
     init {
         isAddNoticeVisible.value = false
-        datesData.value = getDates("20.01.2022","25.01.2022")
+        datesData.value = getDates("01.01.2022","01.12.2022")
         Log.i("MyError", "CreateDates")
     }
 

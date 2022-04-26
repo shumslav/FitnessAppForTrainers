@@ -18,6 +18,7 @@ class DaysAdapter(val viewmodel: ScheduleViewModel, lifecycleOwner: LifecycleOwn
     RecyclerView.Adapter<DaysAdapter.DayCardHolder>() {
 
     private var lastPosition: MaterialCardView? = null
+    private var lastCalendarDay: CalendarDay? = null
 
     init {
         viewmodel.datesData.observe(
@@ -25,6 +26,7 @@ class DaysAdapter(val viewmodel: ScheduleViewModel, lifecycleOwner: LifecycleOwn
         ) { t ->
             Log.i("MyError", "UpdateDates")
             lastPosition = null
+            lastCalendarDay = null
             this@DaysAdapter.notifyDataSetChanged()
         }
     }

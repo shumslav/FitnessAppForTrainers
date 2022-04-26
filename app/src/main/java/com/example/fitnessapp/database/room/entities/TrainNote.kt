@@ -9,8 +9,10 @@ data class TrainNote(
     @PrimaryKey(autoGenerate = true)
     val id:Int,
     val date:String,
-    val time:String,
-    val duration:String,
+    @ColumnInfo(name = "start_time")
+    val startTime:String,
+    @ColumnInfo(name = "finish_time")
+    val finishTime:String,
     @ColumnInfo(name = "body_part")
     val bodyPart:String,
     @TypeConverters(ExercisesTypeConverter::class)
