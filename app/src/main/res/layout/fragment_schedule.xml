@@ -41,8 +41,10 @@
                 app:strokeWidth="1dp">
 
                 <ImageView
+                    android:id="@+id/add_train_note"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="#CCB0A295"
                     android:src="@drawable/ic_add_notice" />
 
             </com.google.android.material.card.MaterialCardView>
@@ -50,5 +52,9 @@
 
         </RelativeLayout>
 
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
     </FrameLayout>
 </layout>

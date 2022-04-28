@@ -9,7 +9,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="250dp">
+        android:layout_height="wrap_content">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="25sp"
                 android:layout_toEndOf="@id/start_time"
-                android:text=" - "/>
+                android:text="-"/>
 
             <TextView
                 android:id="@+id/finish_time"
@@ -44,9 +44,9 @@
                 android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/start_time"
                 android:maxLines="1"
                 android:text="@{trainNote.bodyPart}"
-                android:layout_below="@id/start_time"
                 android:textSize="40sp" />
 
             <TextView

@@ -3,12 +3,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clickable="true"
+    android:focusable="true"
     tools:context=".ui.schedule.AddNewNoteFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical">
+
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
 
 </FrameLayout>

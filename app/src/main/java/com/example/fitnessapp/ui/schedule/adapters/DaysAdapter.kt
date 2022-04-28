@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
+import com.example.fitnessapp.R
 import com.example.fitnessapp.databinding.ScheduleDayCardBinding
 import com.example.fitnessapp.ui.schedule.ScheduleViewModel
 import com.example.fitnessapp.models.CalendarDay
@@ -35,14 +36,11 @@ class DaysAdapter(val viewmodel: ScheduleViewModel, lifecycleOwner: LifecycleOwn
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DayCardHolder {
         return DayCardHolder(
-            ScheduleDayCardBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
+            ScheduleDayCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
 
+    @SuppressLint("ResourceAsColor")
     override fun onBindViewHolder(holder: DayCardHolder, position: Int) {
         if (!viewmodel.datesData.value.isNullOrEmpty()) {
             val datesValue = viewmodel.datesData.value!!
@@ -67,5 +65,6 @@ class DaysAdapter(val viewmodel: ScheduleViewModel, lifecycleOwner: LifecycleOwn
         holder.binding.cardDay.setCardBackgroundColor(Color.rgb(157, 157, 157))
         lastPosition = holder.binding.cardDay
         viewmodel.lastPickedDay.value = calendarDay
+        viewmodel.getTrainNotes()
     }
 }

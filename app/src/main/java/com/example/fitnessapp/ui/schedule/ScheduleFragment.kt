@@ -19,14 +19,15 @@ import makeToast
 class ScheduleFragment : Fragment() {
 
     lateinit var viewModel: ScheduleViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = FragmentScheduleBinding.inflate(inflater,container,false)
+        val binding = FragmentScheduleBinding.inflate(inflater, container, false)
         val viewModel = ViewModelProvider(requireActivity())[ScheduleViewModel::class.java]
         val daysAdapter = DaysAdapter(viewModel, this)
-        binding.recyclerDays.adapter= daysAdapter
+        binding.recyclerDays.adapter = daysAdapter
         binding.recyclerDays.layoutManager = LinearLayoutManager(requireContext())
         viewModel.isAddNoticeVisible.observe(viewLifecycleOwner) { t ->
             if (t == true)
@@ -36,6 +37,12 @@ class ScheduleFragment : Fragment() {
         }
         viewModel.lastPickedDay.observe(viewLifecycleOwner) {
             viewModel.getTrainNotes()
+        }
+        binding.addNotice.setOnClickListener {
+            childFragmentManager.beginTransaction()
+                .add(R.id.fragment_container, AddNewNoteFragment())
+                .addToBackStack("Schedule")
+                .commit()
         }
         return binding.root
     }

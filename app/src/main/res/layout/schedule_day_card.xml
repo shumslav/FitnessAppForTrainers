@@ -13,6 +13,7 @@
         android:layout_width="110dp"
         android:layout_height="wrap_content"
         app:strokeColor="#9E9D9D"
+        app:cardBackgroundColor="@color/day_card_back"
         app:strokeWidth="1dp">
 
         <RelativeLayout
@@ -24,6 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:textColor="@color/white"
                 android:text="@{calendarDay.month}"
                 android:textSize="35sp" />
 
@@ -34,8 +36,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/month"
                 android:gravity="center"
+                android:textColor="@color/white"
                 android:text="@{calendarDay.day}"
-                android:textSize="65dp" />
+                android:textSize="65sp" />
 
         </RelativeLayout>
 
