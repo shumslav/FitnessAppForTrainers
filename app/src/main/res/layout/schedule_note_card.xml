@@ -1,46 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="250dp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <RelativeLayout
+    <data>
+        <variable
+            name="trainNote"
+            type="com.example.fitnessapp.databases.room.entities.TrainNote" />
+    </data>
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="20dp">
+        android:layout_height="250dp">
 
-        <TextView
-            android:id="@+id/time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="25sp"
-            android:layout_alignParentStart="true"
-            android:text="00:00"/>
-
-        <TextView
-            android:id="@+id/type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="25sp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="10dp"
-            android:text="type"/>
-
-        <TextView
-            android:id="@+id/name"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:text="NAME"
-            android:layout_below="@id/time"
-            android:textSize="40sp"/>
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="duration min"
-            android:layout_below="@id/name"
-            android:textSize="20sp"/>
+            <TextView
+                android:id="@+id/start_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:text="@{trainNote.startTime}"
+                android:textSize="25sp" />
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/_tire"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:layout_toEndOf="@id/start_time"
+                android:text=" - "/>
 
-</androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/finish_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:layout_toEndOf="@id/_tire"
+                android:text="@{trainNote.finishTime}" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="@{trainNote.bodyPart}"
+                android:layout_below="@id/start_time"
+                android:textSize="40sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{trainNote.duration}"
+                android:layout_below="@id/name"
+                android:textSize="20sp" />
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

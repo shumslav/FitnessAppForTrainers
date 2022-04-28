@@ -18,12 +18,13 @@ import makeToast
 
 class ScheduleFragment : Fragment() {
 
-    private val viewModel: ScheduleViewModel by viewModels()
+    lateinit var viewModel: ScheduleViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         val binding = FragmentScheduleBinding.inflate(inflater,container,false)
+        val viewModel = ViewModelProvider(requireActivity())[ScheduleViewModel::class.java]
         val daysAdapter = DaysAdapter(viewModel, this)
         binding.recyclerDays.adapter= daysAdapter
         binding.recyclerDays.layoutManager = LinearLayoutManager(requireContext())
