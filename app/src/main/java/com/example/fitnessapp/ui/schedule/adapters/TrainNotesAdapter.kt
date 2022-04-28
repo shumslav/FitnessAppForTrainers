@@ -9,6 +9,8 @@ import com.example.fitnessapp.databinding.ScheduleNoteCardBinding
 import com.example.fitnessapp.ui.schedule.ScheduleViewModel
 
 class TrainNotesAdapter(val viewmodel: ScheduleViewModel, lifecycleOwner: LifecycleOwner):
+
+
     RecyclerView.Adapter<TrainNotesAdapter.TrainNotesHolder>() {
 
     class TrainNotesHolder(val binding: ScheduleNoteCardBinding) : RecyclerView.ViewHolder(binding.root)
@@ -24,7 +26,9 @@ class TrainNotesAdapter(val viewmodel: ScheduleViewModel, lifecycleOwner: Lifecy
     }
 
     override fun onBindViewHolder(holder: TrainNotesHolder, position: Int) {
-
+        if (viewmodel.trainNotes.value!= null) {
+            holder.binding.trainNote = viewmodel.trainNotes.value!!.get(position)
+        }
     }
 
     override fun getItemCount(): Int {
