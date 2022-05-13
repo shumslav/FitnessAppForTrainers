@@ -1,16 +1,15 @@
 package com.example.fitnessapp.ui.schedule.adapters
 
 import android.annotation.SuppressLint
+import android.content.res.Resources
 import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
-import com.example.fitnessapp.R
 import com.example.fitnessapp.databinding.ScheduleDayCardBinding
-import com.example.fitnessapp.ui.schedule.ScheduleViewModel
+import com.example.fitnessapp.ui.schedule.viewModels.ScheduleViewModel
 import com.example.fitnessapp.models.CalendarDay
 import com.google.android.material.card.MaterialCardView
 
@@ -20,6 +19,7 @@ class DaysAdapter(val viewmodel: ScheduleViewModel, lifecycleOwner: LifecycleOwn
 
     private var lastPosition: MaterialCardView? = null
     private var lastCalendarDay: CalendarDay? = null
+    var id = -1
 
     init {
         viewmodel.datesData.observe(
@@ -32,7 +32,13 @@ class DaysAdapter(val viewmodel: ScheduleViewModel, lifecycleOwner: LifecycleOwn
         }
     }
 
-    class DayCardHolder(val binding: ScheduleDayCardBinding) : RecyclerView.ViewHolder(binding.root)
+    class DayCardHolder(val binding: ScheduleDayCardBinding) : RecyclerView.ViewHolder(binding.root){
+        init {
+            binding.cardDay.setOnClickListener {
+
+            }
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DayCardHolder {
         return DayCardHolder(
@@ -46,10 +52,24 @@ class DaysAdapter(val viewmodel: ScheduleViewModel, lifecycleOwner: LifecycleOwn
             val datesValue = viewmodel.datesData.value!!
             val calendarDay = datesValue[position]
             holder.binding.calendarDay = calendarDay
-            holder.binding.cardDay.setOnClickListener { onClickDay(holder, calendarDay) }
-            if (calendarDay == viewmodel.lastPickedDay.value) {
-                onClickDay(holder, calendarDay)
+
+            holder.binding.cardDay.setOnClickListener {
+                viewmodel.isAddNoticeVisible.value = true
+                viewmodel.lastPickedDay.value = calendarDay
+                if (id != -1){
+                    notifyItemChanged(id)
+                }
+                id = holder.adapterPosition
+                Log.i("ID day", id.toString())
+                notifyItemChanged(holder.adapterPosition)
+
             }
+            if (calendarDay.dateString == viewmodel.lastPickedDay.value?.dateString) {
+                holder.binding.cardDay.setCardBackgroundColor(Color.rgb(100, 89, 76))
+                id = holder.adapterPosition
+            }
+            else
+                holder.binding.cardDay.setCardBackgroundColor(Color.rgb(164,143,116))
         }
     }
 
@@ -59,12 +79,20 @@ class DaysAdapter(val viewmodel: ScheduleViewModel, lifecycleOwner: LifecycleOwn
 
     private fun onClickDay(holder: DayCardHolder, calendarDay: CalendarDay) {
         viewmodel.isAddNoticeVisible.value = true
-        if (lastPosition != null) {
-            lastPosition!!.setCardBackgroundColor(Color.WHITE)
+        if (id != -1) {
+//            lastPosition!!.setCardBackgroundColor(Color.WHITE)
+//            id = holder.adapterPosition
+            notifyItemChanged(id)
         }
         holder.binding.cardDay.setCardBackgroundColor(Color.rgb(157, 157, 157))
         lastPosition = holder.binding.cardDay
+        id = holder.adapterPosition
+        Log.i("Day ID", id.toString())
         viewmodel.lastPickedDay.value = calendarDay
         viewmodel.getTrainNotes()
+    }
+
+    fun isSelected(){
+
     }
 }

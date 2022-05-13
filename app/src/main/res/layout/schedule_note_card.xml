@@ -4,7 +4,7 @@
     <data>
         <variable
             name="trainNote"
-            type="com.example.fitnessapp.databases.room.entities.TrainNote" />
+            type="com.example.fitnessapp.models.TrainNote" />
     </data>
 
     <androidx.cardview.widget.CardView

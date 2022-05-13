@@ -2,6 +2,7 @@ import android.content.Context
 import android.util.Log
 import android.widget.Toast
 import com.example.fitnessapp.models.CalendarDay
+import com.example.fitnessapp.models.Exercise
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -43,4 +44,55 @@ fun getDates(fromDate:String,toDate:String):MutableList<CalendarDay>{
     }
     Log.i("Count days", "${dates.size}")
     return dates
+}
+
+class ExercisesTypeConverter {
+
+    fun toExercises(exercisesString: String): List<Exercise> {
+        val data = exercisesString.split(',')
+        val exercises = mutableListOf<Exercise>()
+        data.forEach {
+            val dataList = it.split(";")
+            exercises.add(
+                Exercise(
+                    dataList[0],
+                    dataList[1],
+                    dataList[2].toInt(),
+                    dataList[3].toDouble()
+                )
+            )
+        }
+        return exercises
+    }
+
+
+    fun fromExercises(exercises: List<Exercise>): String {
+        var exercisesString = ""
+        for (i in 0..exercises.size) {
+            val exercise = exercises[i]
+            exercisesString += "${exercise.name}&${exercise.bodyPart}&${exercise.repetitions}&${exercise.liftedWeight}"
+            if (i != exercises.size-1 && exercises.size!=1)
+                exercisesString+="*"
+        }
+        return exercisesString
+    }
+
+}
+
+fun getMonthFromNumber(month:String):String{
+    return when(month){
+        "Jan" -> "01"
+        "Feb" -> "02"
+        "Mar" -> "03"
+        "Apr" -> "04"
+        "May" -> "05"
+        "Jun" -> "06"
+        "Jul" -> "07"
+        "Aug" -> "08"
+        "Sep" -> "09"
+        "Oct" -> "10"
+        "Nov" -> "11"
+        "Dec" -> "12"
+        else -> ""
+    }
 }

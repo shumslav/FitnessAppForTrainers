@@ -36,8 +36,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/month"
                 android:gravity="center"
-                android:textColor="@color/white"
                 android:text="@{calendarDay.day}"
+                android:textColor="@color/white"
                 android:textSize="65sp" />
 
         </RelativeLayout>

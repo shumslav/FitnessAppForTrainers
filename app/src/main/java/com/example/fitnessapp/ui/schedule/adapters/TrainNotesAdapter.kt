@@ -4,9 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
-import com.example.fitnessapp.databinding.ScheduleDayCardBinding
 import com.example.fitnessapp.databinding.ScheduleNoteCardBinding
-import com.example.fitnessapp.ui.schedule.ScheduleViewModel
+import com.example.fitnessapp.ui.schedule.viewModels.ScheduleViewModel
 
 class TrainNotesAdapter(val viewmodel: ScheduleViewModel, lifecycleOwner: LifecycleOwner):
 

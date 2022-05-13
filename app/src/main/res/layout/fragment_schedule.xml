@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewmodel"
-            type="com.example.fitnessapp.ui.schedule.ScheduleViewModel" />
+            type="com.example.fitnessapp.ui.schedule.viewModels.ScheduleViewModel" />
+
+        <variable
+            name="fragment"
+            type="com.example.fitnessapp.ui.schedule.ScheduleFragment" />
     </data>
 
     <FrameLayout
@@ -14,46 +19,84 @@
         android:layout_height="match_parent"
         tools:context="com.example.fitnessapp.ui.schedule.ScheduleFragment">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_days"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/schedule_day_card" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_notes"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/recycler_days"/>
+                android:background="#547a72">
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/add_notice"
+                <TextView
+                    android:id="@+id/start_date"
+                    android:layout_width="165dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:onClick="@{() -> fragment.setDateStart()}"
+                    android:text="@{viewmodel.startDate}"
+                    android:textSize="28sp" />
+
+                <TextView
+                    android:id="@+id/end_date"
+                    android:layout_width="165dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:onClick="@{() -> fragment.setDateEnd()}"
+                    android:text="@{viewmodel.endDate}"
+                    android:textSize="28sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_toEndOf="@id/recycler_days"
-                android:layout_below="@id/recycler_notes"
-                app:strokeColor="#9E9D9D"
-                android:backgroundTint="#547a72"
-                app:strokeWidth="1dp">
+                android:layout_height="match_parent">
 
-                <ImageView
-                    android:layout_width="match_parent"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_days"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:src="@drawable/ic_add_notice" />
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/schedule_day_card" />
 
-            </com.google.android.material.card.MaterialCardView>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_notes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/recycler_days" />
 
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/add_notice"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_below="@id/recycler_notes"
+                    android:layout_toEndOf="@id/recycler_days"
+                    android:backgroundTint="#547a72"
+                    app:strokeColor="#9E9D9D"
+                    app:strokeWidth="1dp">
 
-        </RelativeLayout>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_add_notice" />
 
+                </com.google.android.material.card.MaterialCardView>
+            </RelativeLayout>
+
+        </LinearLayout>
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragment_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
     </FrameLayout>
 </layout>
