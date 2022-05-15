@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitnessapp.R
 import com.example.fitnessapp.databinding.FragmentScheduleBinding
 import com.example.fitnessapp.adapters.DaysAdapter
+import com.example.fitnessapp.adapters.TrainNotesAdapter
 import com.example.fitnessapp.viewModels.ScheduleViewModel
 import java.util.*
 
@@ -28,6 +29,7 @@ class ScheduleFragment : Fragment() {
     ): View {
         val binding = FragmentScheduleBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(requireActivity())[ScheduleViewModel::class.java]
+
         startDateListener = OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
                 viewModel.calendarStart.set(Calendar.YEAR, year)
                 viewModel.calendarStart.set(Calendar.MONTH, monthOfYear)
@@ -35,6 +37,7 @@ class ScheduleFragment : Fragment() {
                 viewModel.setDates()
                 binding.startDate.text = viewModel.startDate
             }
+
         endDateListener = OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
                 viewModel.calendarEnd.set(Calendar.YEAR, year)
                 viewModel.calendarEnd.set(Calendar.MONTH, monthOfYear)
@@ -42,11 +45,13 @@ class ScheduleFragment : Fragment() {
                 viewModel.setDates()
                 binding.endDate.text = viewModel.endDate
             }
-        val daysAdapter = DaysAdapter(viewModel, this)
-        binding.recyclerDays.adapter = daysAdapter
+
         binding.viewmodel = viewModel
-        binding.fragment = this
+        binding.recyclerDays.adapter = DaysAdapter(viewModel, this)
         binding.recyclerDays.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerNotes.adapter = TrainNotesAdapter(viewModel,viewLifecycleOwner)
+        binding.recyclerNotes.layoutManager = LinearLayoutManager(requireContext())
+        binding.fragment = this
 
         viewModel.isAddNoticeVisible.observe(viewLifecycleOwner) { t ->
             if (t == true)
@@ -56,14 +61,21 @@ class ScheduleFragment : Fragment() {
         }
 
         viewModel.lastPickedDay.observe(viewLifecycleOwner) {
-            viewModel.getTrainNotes()
+            if (it != null) {
+                viewModel.getTrainNotes()
+            }
         }
 
         binding.addNotice.setOnClickListener {
-            childFragmentManager.beginTransaction()
-                .add(R.id.fragment_container, AddNewNoteFragment())
-                .addToBackStack("Schedule")
-                .commit()
+            if(viewModel.lastPickedDay.value != null) {
+                childFragmentManager.beginTransaction()
+                    .add(
+                        R.id.fragment_container,
+                        AddNewNoteFragment.newInstance(viewModel.lastPickedDay.value!!.dateString)
+                    )
+                    .addToBackStack("Schedule")
+                    .commit()
+            }
         }
         return binding.root
     }
@@ -86,6 +98,11 @@ class ScheduleFragment : Fragment() {
             viewModel.calendarEnd.get(Calendar.DAY_OF_MONTH)
         )
             .show()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getTrainNotes()
     }
 
 }

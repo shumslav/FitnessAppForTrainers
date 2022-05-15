@@ -1,7 +1,10 @@
 package com.example.fitnessapp.ui.login
 
+import NODE_EXERCISES
+import NODE_GROUP_MUSCLES
 import NODE_PASSWORD
 import NODE_PASSWORDS
+import NODE_USERS
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,6 +19,9 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import makeToast
+import standartExercises
+import standartGroupMuscles
+import kotlin.math.log
 
 
 class RegistrationFragment : Fragment() {
@@ -50,6 +56,7 @@ class RegistrationFragment : Fragment() {
                                 .child(login)
                                 .child(NODE_PASSWORD)
                                 .setValue(password)
+                            addCommonExercisesAndGroups(login)
                             this@RegistrationFragment.requireActivity().supportFragmentManager.popBackStack()
                         }
                         else
@@ -65,5 +72,22 @@ class RegistrationFragment : Fragment() {
         }
     }
 
-    private fun addCommonExercises
+    private fun addCommonExercisesAndGroups(login:String){
+        standartGroupMuscles.forEach {
+            Firebase.database.reference
+                .child(NODE_USERS)
+                .child(login)
+                .child(NODE_GROUP_MUSCLES)
+                .child(it).setValue(it)
+        }
+        standartExercises.forEach {
+            Firebase.database.reference
+                .child(NODE_USERS)
+                .child(login)
+                .child(NODE_EXERCISES)
+                .child(it.bodyPart)
+                .child(it.name)
+                .setValue(it)
+        }
+    }
 }

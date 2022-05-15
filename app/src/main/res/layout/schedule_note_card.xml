@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
@@ -9,7 +10,10 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:backgroundTint="#efe6c4"
+        app:cardCornerRadius="5dp"
+        android:layout_marginBottom="10dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -22,13 +26,13 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:text="@{trainNote.startTime}"
-                android:textSize="25sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/_tire"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:layout_toEndOf="@id/start_time"
                 android:text="-"/>
 
@@ -36,9 +40,17 @@
                 android:id="@+id/finish_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:layout_toEndOf="@id/_tire"
                 android:text="@{trainNote.finishTime}" />
+
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="5dp"/>
 
             <TextView
                 android:id="@+id/name"

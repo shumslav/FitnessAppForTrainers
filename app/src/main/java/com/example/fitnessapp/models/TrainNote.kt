@@ -6,12 +6,14 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 data class TrainNote(
-    val id:Int,
-    val date:String,
-    val startTime:String,
-    val finishTime:String,
-    val bodyPart:String,
-//    val exercises:List<Exercise>
+    var id:Int = 0,
+    var date:String = "",
+    var startTime:String = "",
+    var finishTime:String = "",
+    var bodyPart:String = "",
+    var exercises:MutableList<AddedExercise> = mutableListOf(),
+    var notes:String = "",
+    var isCompleted:Boolean = false
 ){
     val duration:String
         get() {

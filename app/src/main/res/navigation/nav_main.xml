@@ -10,4 +10,9 @@
         android:name="com.example.fitnessapp.ui.schedule.ScheduleFragment"
         android:label="fragment_schedule"
         tools:layout="@layout/fragment_schedule" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.fitnessapp.ui.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

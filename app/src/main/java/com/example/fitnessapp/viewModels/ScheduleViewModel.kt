@@ -1,11 +1,19 @@
 package com.example.fitnessapp.viewModels
 
+import NODE_TRAIN_NOTES
+import NODE_USERS
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.example.fitnessapp.models.CalendarDay
+import com.example.fitnessapp.models.CurrentUser
 import com.example.fitnessapp.models.TrainNote
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import getDates
 import getMonthFromNumber
 import java.util.*
@@ -14,12 +22,13 @@ class ScheduleViewModel(private val myApplication: Application) : AndroidViewMod
 
     val datesData: MutableLiveData<MutableList<CalendarDay>> = MutableLiveData()
     val isAddNoticeVisible: MutableLiveData<Boolean> = MutableLiveData()
-    val lastPickedDay: MutableLiveData<CalendarDay> = MutableLiveData()
+    var lastPickedDay: MutableLiveData<CalendarDay?> = MutableLiveData()
     val trainNotes: MutableLiveData<MutableList<TrainNote>> = MutableLiveData()
     val calendarStart = Calendar.getInstance()
     val calendarEnd = Calendar.getInstance()
     var startDate = ""
     var endDate = ""
+    val user = CurrentUser(myApplication)
 
     init {
         isAddNoticeVisible.value = false
@@ -28,6 +37,25 @@ class ScheduleViewModel(private val myApplication: Application) : AndroidViewMod
     }
 
     fun getTrainNotes() {
+        if (lastPickedDay.value==null)
+            return
+        Firebase.database.reference
+            .child(NODE_USERS)
+            .child(user.login)
+            .child(NODE_TRAIN_NOTES)
+            .child(lastPickedDay.value!!.dateString).addListenerForSingleValueEvent(
+                object : ValueEventListener{
+                    val result = mutableListOf<TrainNote>()
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        snapshot.children.forEach {
+                            result.add(it.getValue(TrainNote::class.java)!!)
+                        }
+                        trainNotes.value = result
+                    }
+                    override fun onCancelled(error: DatabaseError) {
+                    }
+                }
+            )
     }
 
     fun setDates(){
@@ -42,6 +70,12 @@ class ScheduleViewModel(private val myApplication: Application) : AndroidViewMod
         Log.i("DATES", startDate)
         Log.i("DATES", endDate)
         datesData.value = getDates(startDate, endDate)
+        datesData.value!!.forEach {
+            if (lastPickedDay.value?.dateString==it.dateString)
+                return
+        }
+        lastPickedDay.value = null
+        isAddNoticeVisible.value = false
     }
 
 }

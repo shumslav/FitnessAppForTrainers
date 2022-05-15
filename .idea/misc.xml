@@ -7,13 +7,20 @@
         <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/drawable/ic_add_notice.xml" value="0.2045" />
         <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/drawable/ic_baseline_add_box_24.xml" value="0.194" />
         <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/drawable/ic_baseline_calendar_today_24.xml" value="0.194" />
+        <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/drawable/ic_profile.xml" value="0.154" />
+        <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/drawable/ic_schedule.xml" value="0.154" />
         <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/layout/activity_enter.xml" value="0.16847826086956522" />
         <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/layout/activity_main.xml" value="0.17481884057971014" />
         <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/layout/add_exercise_card.xml" value="0.16847826086956522" />
-        <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/layout/added_exercise_card.xml" value="0.16847826086956522" />
-        <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/layout/fragment_add_new_note.xml" value="0.12" />
+        <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/layout/added_exercise_card.xml" value="0.18" />
+        <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/layout/fragment_add_new_note.xml" value="0.33" />
+        <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/layout/fragment_blank.xml" value="0.16847826086956522" />
+        <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/layout/fragment_exercises.xml" value="0.16847826086956522" />
+        <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/layout/fragment_group_muscles.xml" value="0.18" />
+        <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/layout/fragment_profile.xml" value="0.2" />
         <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/layout/fragment_registration.xml" value="0.19010416666666666" />
         <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/layout/fragment_schedule.xml" value="0.22" />
+        <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/layout/group_muscles_card.xml" value="0.25" />
         <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/layout/schedule_day_card.xml" value="0.33" />
         <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/layout/schedule_note_card.xml" value="0.17527173913043478" />
         <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/menu/bottom_menu.xml" value="0.22" />

@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import com.example.fitnessapp.R
 import com.example.fitnessapp.databinding.ActivityEnterBinding
 import com.example.fitnessapp.databinding.FragmentScheduleBinding
+import com.example.fitnessapp.models.CurrentUser
 import com.example.fitnessapp.ui.MainActivity
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
@@ -22,14 +23,14 @@ import makeToast
 class EnterActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityEnterBinding
-    lateinit var user: SharedPreferences
+    lateinit var user: CurrentUser
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        user = getSharedPreferences("user", MODE_PRIVATE)
+        user = CurrentUser(this)
 
-        if (user.contains("login")) {
+        if (user.isEnterProfile()) {
             startActivity(Intent(this, MainActivity::class.java))
         }
 
@@ -41,16 +42,17 @@ class EnterActivity : AppCompatActivity() {
         if (checkEmptyFields()) {
             val loginText = binding.login.text.toString()
             val passwordText = binding.password.text.toString()
-            Firebase.database.reference.child(NODE_PASSWORDS).addValueEventListener(
+            Firebase.database.reference.child(NODE_PASSWORDS).addListenerForSingleValueEvent(
                 object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         if (snapshot.hasChild(loginText)) {
                             val password =
-                                snapshot.child(loginText)
+                                snapshot
+                                    .child(loginText)
                                     .child(NODE_PASSWORD)
                                     .getValue(String::class.java)
                             if (passwordText == password) {
-                                user.edit().putString("login", loginText).apply()
+                                user.login = loginText
                                 startActivity(Intent(this@EnterActivity, MainActivity::class.java))
                             } else
                                 makeToast(this@EnterActivity, "Неправильный пароль")

@@ -38,7 +38,7 @@
                     android:gravity="center"
                     android:text="Создание тренировки"
                     android:textColor="@color/white"
-                    android:textSize="35dp" />
+                    android:textSize="35sp" />
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
@@ -47,6 +47,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
                     android:backgroundTint="#c1b193"
                     app:cardCornerRadius="15dp">
 
@@ -125,6 +126,7 @@
                             android:background="@color/white">
 
                             <Spinner
+                                android:id="@+id/groups_muscles"
                                 android:layout_width="322dp"
                                 android:layout_height="60dp"
                                 android:backgroundTint="@color/black" />
@@ -156,54 +158,71 @@
                                 <androidx.recyclerview.widget.RecyclerView
                                     android:id="@+id/recycler_added_exercises"
                                     android:layout_width="match_parent"
-                                    android:layout_height="wrap_content" />
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_marginTop="10dp" />
 
                                 <LinearLayout
                                     android:id="@+id/add_exercise_form"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginTop="10dp"
                                     android:orientation="vertical">
 
-                                    <RelativeLayout
+                                    <LinearLayout
                                         android:layout_width="match_parent"
-                                        android:layout_height="40dp">
+                                        android:layout_height="40dp"
+                                        android:gravity="center">
 
-                                        <EditText
-                                            android:id="@+id/name"
-                                            android:layout_width="200dp"
-                                            android:layout_height="match_parent"
+                                        <LinearLayout
+                                            android:id="@+id/nameSpinner"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
                                             android:layout_alignParentStart="true"
-                                            android:layout_marginStart="10dp"
                                             android:layout_marginEnd="5dp"
-                                            android:background="@color/white"
-                                            android:textColor="@color/black" />
+                                            android:background="@color/white">
+
+                                            <Spinner
+                                                android:id="@+id/name"
+                                                android:layout_width="150dp"
+                                                android:layout_height="40dp"
+                                                android:backgroundTint="@color/black"
+                                                android:textColor="@color/black" />
+                                        </LinearLayout>
 
                                         <EditText
                                             android:id="@+id/repetitions"
-                                            android:layout_width="40dp"
+                                            android:layout_width="60dp"
                                             android:layout_height="match_parent"
                                             android:layout_marginEnd="5dp"
-                                            android:layout_toEndOf="@id/name"
                                             android:background="@color/white"
+                                            android:gravity="center"
+                                            android:hint="Повт."
+                                            android:inputType="number"
                                             android:textColor="@color/black" />
 
                                         <EditText
                                             android:id="@+id/rounds"
-                                            android:layout_width="40dp"
+                                            android:layout_width="60dp"
                                             android:layout_height="match_parent"
                                             android:layout_marginEnd="5dp"
-                                            android:layout_toEndOf="@id/repetitions"
                                             android:background="@color/white"
+                                            android:gravity="center"
+                                            android:hint="Подх."
+                                            android:inputType="number"
                                             android:textColor="@color/black" />
 
                                         <EditText
                                             android:id="@+id/weight"
-                                            android:layout_width="40dp"
+                                            android:layout_width="60dp"
                                             android:layout_height="match_parent"
                                             android:layout_toEndOf="@id/rounds"
                                             android:background="@color/white"
+                                            android:gravity="center"
+                                            android:hint="Кг"
+                                            android:inputType="number"
                                             android:textColor="@color/black" />
-                                    </RelativeLayout>
+                                    </LinearLayout>
 
                                     <LinearLayout
                                         android:layout_width="wrap_content"
@@ -236,6 +255,8 @@
                                     android:layout_width="205dp"
                                     android:layout_height="50dp"
                                     android:layout_gravity="center_horizontal"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginBottom="10dp"
                                     android:backgroundTint="#3c6763"
                                     android:onClick="@{() -> viewmodel.addExercise()}"
                                     app:cardCornerRadius="8dp">
@@ -249,6 +270,35 @@
                             </LinearLayout>
 
                         </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="13dp"
+                            android:text="Заметки"
+                            android:textColor="@color/black"
+                            android:textSize="33sp" />
+
+                        <EditText
+                            android:id="@+id/notes"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:textSize="17sp"
+                            android:textColor="@color/black"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="10dp"/>
+
+                        <ImageView
+                            android:id="@+id/add_new_train"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:src="@drawable/ic_accept"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:onClick="@{() -> fragment.addNote()}"
+                            android:layout_marginBottom="10dp"/>
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>

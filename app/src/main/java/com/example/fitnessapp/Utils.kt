@@ -1,24 +1,30 @@
 import android.content.Context
 import android.util.Log
 import android.widget.Toast
+import com.example.fitnessapp.enums.Calculation
 import com.example.fitnessapp.models.CalendarDay
+import com.example.fitnessapp.models.Exercise
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
 val NODE_PASSWORDS = "Passwords"
 val NODE_PASSWORD = "Password"
+val NODE_GROUP_MUSCLES = "GroupMuscles"
+val NODE_EXERCISES = "Exercises"
+val NODE_USERS = "Users"
+val NODE_TRAIN_NOTES = "TrainNotes"
 
-fun makeToast(context: Context, text:String){
-    Toast.makeText(context,text,Toast.LENGTH_SHORT).show()
+fun makeToast(context: Context, text: String) {
+    Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
 }
 
-fun getDates(fromDate:String,toDate:String):MutableList<CalendarDay>{
+fun getDates(fromDate: String, toDate: String): MutableList<CalendarDay> {
     val dates = mutableListOf<CalendarDay>()
     val df1 = SimpleDateFormat("dd.MM.yyyy", Locale.US)
 
-    var date1:Date?
-    var date2:Date?
+    var date1: Date?
+    var date2: Date?
 
     try {
         date1 = df1.parse(fromDate)
@@ -30,14 +36,13 @@ fun getDates(fromDate:String,toDate:String):MutableList<CalendarDay>{
         val cal2 = Calendar.getInstance()
         cal2.time = date2!!
 
-        while(!cal1.after(cal2))
-        {
+        while (!cal1.after(cal2)) {
             val time = cal1.time
             val weekday = time.toString().split(" ")[0]
             val day = time.toString().split(" ")[2]
             val month = time.toString().split(" ")[1]
             val year = time.toString().split(" ").last()
-            dates.add(CalendarDay(day,weekday,month, year))
+            dates.add(CalendarDay(day, weekday, month, year))
             cal1.add(Calendar.DATE, 1)
         }
     } catch (e: ParseException) {
@@ -81,8 +86,8 @@ fun getDates(fromDate:String,toDate:String):MutableList<CalendarDay>{
 //
 //}
 
-fun getMonthFromNumber(month:String):String{
-    return when(month){
+fun getMonthFromNumber(month: String): String {
+    return when (month) {
         "Jan" -> "01"
         "Feb" -> "02"
         "Mar" -> "03"
@@ -98,3 +103,14 @@ fun getMonthFromNumber(month:String):String{
         else -> ""
     }
 }
+
+val standartGroupMuscles = listOf("Бицепс", "Грудь", "Пресс", "Ноги", "Спина", "Плечи", "Трицепс")
+val standartExercises = listOf(
+    Exercise("Бицепс", "Сгибание со штангой", Calculation.REPETITIONS, true),
+    Exercise("Грудь", "Жим лежа", Calculation.REPETITIONS, true),
+    Exercise("Пресс", "Планка", Calculation.SECONDS, false),
+    Exercise("Ноги", "Присяд", Calculation.REPETITIONS, true),
+    Exercise("Спина", "Подтягивания", Calculation.REPETITIONS, false),
+    Exercise("Плечи", "Жим сидя", Calculation.REPETITIONS, true),
+    Exercise("Трицепс", "Французский жим", Calculation.REPETITIONS, true)
+)
