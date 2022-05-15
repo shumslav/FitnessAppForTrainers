@@ -2,10 +2,12 @@ import android.content.Context
 import android.util.Log
 import android.widget.Toast
 import com.example.fitnessapp.models.CalendarDay
-import com.example.fitnessapp.models.Exercise
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
+
+val NODE_PASSWORDS = "Passwords"
+val NODE_PASSWORD = "Password"
 
 fun makeToast(context: Context, text:String){
     Toast.makeText(context,text,Toast.LENGTH_SHORT).show()
@@ -46,38 +48,38 @@ fun getDates(fromDate:String,toDate:String):MutableList<CalendarDay>{
     return dates
 }
 
-class ExercisesTypeConverter {
-
-    fun toExercises(exercisesString: String): List<Exercise> {
-        val data = exercisesString.split(',')
-        val exercises = mutableListOf<Exercise>()
-        data.forEach {
-            val dataList = it.split(";")
-            exercises.add(
-                Exercise(
-                    dataList[0],
-                    dataList[1],
-                    dataList[2].toInt(),
-                    dataList[3].toDouble()
-                )
-            )
-        }
-        return exercises
-    }
-
-
-    fun fromExercises(exercises: List<Exercise>): String {
-        var exercisesString = ""
-        for (i in 0..exercises.size) {
-            val exercise = exercises[i]
-            exercisesString += "${exercise.name}&${exercise.bodyPart}&${exercise.repetitions}&${exercise.liftedWeight}"
-            if (i != exercises.size-1 && exercises.size!=1)
-                exercisesString+="*"
-        }
-        return exercisesString
-    }
-
-}
+//class ExercisesTypeConverter {
+//
+//    fun toExercises(exercisesString: String): List<Exercise> {
+//        val data = exercisesString.split(',')
+//        val exercises = mutableListOf<Exercise>()
+//        data.forEach {
+//            val dataList = it.split(";")
+//            exercises.add(
+//                Exercise(
+//                    dataList[0],
+//                    dataList[1],
+//                    dataList[2].toInt(),
+//                    dataList[3].toDouble()
+//                )
+//            )
+//        }
+//        return exercises
+//    }
+//
+//
+//    fun fromExercises(exercises: List<Exercise>): String {
+//        var exercisesString = ""
+//        for (i in 0..exercises.size) {
+//            val exercise = exercises[i]
+//            exercisesString += "${exercise.name}&${exercise.bodyPart}&${exercise.repetitions}&${exercise.liftedWeight}"
+//            if (i != exercises.size-1 && exercises.size!=1)
+//                exercisesString+="*"
+//        }
+//        return exercisesString
+//    }
+//
+//}
 
 fun getMonthFromNumber(month:String):String{
     return when(month){

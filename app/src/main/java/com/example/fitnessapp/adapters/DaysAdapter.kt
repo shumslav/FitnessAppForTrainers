@@ -1,7 +1,6 @@
-package com.example.fitnessapp.ui.schedule.adapters
+package com.example.fitnessapp.adapters
 
 import android.annotation.SuppressLint
-import android.content.res.Resources
 import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,7 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnessapp.databinding.ScheduleDayCardBinding
-import com.example.fitnessapp.ui.schedule.viewModels.ScheduleViewModel
+import com.example.fitnessapp.viewModels.ScheduleViewModel
 import com.example.fitnessapp.models.CalendarDay
 import com.google.android.material.card.MaterialCardView
 

@@ -1,4 +1,4 @@
-package com.example.fitnessapp.ui.schedule.viewModels
+package com.example.fitnessapp.viewModels
 
 import android.app.Application
 import android.util.Log
@@ -8,7 +8,6 @@ import com.example.fitnessapp.models.CalendarDay
 import com.example.fitnessapp.models.TrainNote
 import getDates
 import getMonthFromNumber
-import java.time.Instant
 import java.util.*
 
 class ScheduleViewModel(private val myApplication: Application) : AndroidViewModel(myApplication) {

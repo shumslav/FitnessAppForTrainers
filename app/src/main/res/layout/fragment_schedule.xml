@@ -7,7 +7,7 @@
 
         <variable
             name="viewmodel"
-            type="com.example.fitnessapp.ui.schedule.viewModels.ScheduleViewModel" />
+            type="com.example.fitnessapp.viewModels.ScheduleViewModel" />
 
         <variable
             name="fragment"

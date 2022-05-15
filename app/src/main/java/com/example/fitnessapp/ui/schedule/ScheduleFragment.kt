@@ -3,7 +3,6 @@ package com.example.fitnessapp.ui.schedule
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,8 +11,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitnessapp.R
 import com.example.fitnessapp.databinding.FragmentScheduleBinding
-import com.example.fitnessapp.ui.schedule.adapters.DaysAdapter
-import com.example.fitnessapp.ui.schedule.viewModels.ScheduleViewModel
+import com.example.fitnessapp.adapters.DaysAdapter
+import com.example.fitnessapp.viewModels.ScheduleViewModel
 import java.util.*
 
 

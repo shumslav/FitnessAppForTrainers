@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="addedExercise"
+            type="com.example.fitnessapp.models.AddedExercise" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/white"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@id/repetitions"
+            android:layout_centerVertical="true"
+            android:text="@{addedExercise.name}"
+            android:layout_marginStart="10dp"/>
+
+        <TextView
+            android:id="@+id/repetitions"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/white"
+            android:text="@{addedExercise.repetitions}"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/rounds"/>
+
+        <TextView
+            android:id="@+id/rounds"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toStartOf="@id/weight"
+            android:textColor="@color/white"
+            android:text="@{addedExercise.rounds}"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp" />
+
+        <TextView
+            android:id="@+id/weight"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/white"
+            android:text="@{addedExercise.liftedWeight}"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"/>
+
+
+    </RelativeLayout>
+</layout>

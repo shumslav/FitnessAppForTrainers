@@ -5,118 +5,254 @@
 
     <data>
 
+        <variable
+            name="viewmodel"
+            type="com.example.fitnessapp.viewModels.NewNoteViewModel" />
+
+        <variable
+            name="fragment"
+            type="com.example.fitnessapp.ui.schedule.AddNewNoteFragment" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#efe6c4"
         android:clickable="true"
         android:focusable="true"
         tools:context=".ui.schedule.AddNewNoteFragment">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#efe6c4"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:background="#547a72"
-                android:gravity="center"
-                android:text="Создание тренировки"
-                android:textColor="@color/white"
-                android:textSize="35dp" />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:backgroundTint="#c1b193"
-                app:cardCornerRadius="15dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:background="#547a72"
+                    android:gravity="center"
+                    android:text="Создание тренировки"
+                    android:textColor="@color/white"
+                    android:textSize="35dp" />
 
-                <LinearLayout
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="13dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="10dp"
-                        android:text="Начало и конец"
-                        android:textColor="@color/black"
-                        android:textSize="33sp" />
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp">
-
-                        <TextView
-                            android:id="@+id/time_start"
-                            android:layout_width="130dp"
-                            android:layout_height="45dp"
-                            android:layout_centerVertical="true"
-                            android:layout_marginStart="27dp"
-                            android:background="@color/white"
-                            android:gravity="center"
-                            android:text=""
-                            android:textColor="@color/black"
-                            android:textSize="35dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="-9dp"
-                            android:gravity="center"
-                            android:text="—"
-                            android:textColor="@color/black"
-                            android:textSize="40sp" />
-
-                        <TextView
-                            android:id="@+id/time_end"
-                            android:layout_width="130dp"
-                            android:layout_height="45dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:layout_marginEnd="27dp"
-                            android:background="@color/white"
-                            android:gravity="center"
-                            android:textSize="35dp" />
-
-                    </RelativeLayout>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="13dp"
-                        android:layout_marginTop="10dp"
-                        android:text="Группа мышц"
-                        android:textColor="@color/black"
-                        android:textSize="33sp" />
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:backgroundTint="#c1b193"
+                    app:cardCornerRadius="15dp">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="13dp"
-                        android:layout_marginTop="13dp"
-                        android:background="@color/white">
+                        android:orientation="vertical">
 
-                        <Spinner
-                            android:layout_width="322dp"
-                            android:layout_height="60dp"
-                            android:backgroundTint="@color/black" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="13dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="Начало и конец"
+                            android:textColor="@color/black"
+                            android:textSize="33sp" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp">
+
+                            <TextView
+                                android:id="@+id/time_start"
+                                android:layout_width="130dp"
+                                android:layout_height="45dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="27dp"
+                                android:background="@color/white"
+                                android:gravity="center"
+                                android:onClick="@{() -> fragment.setTimeStart()}"
+                                android:text="@{viewmodel.startTime}"
+                                android:textColor="@color/black"
+                                android:textSize="35dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="-9dp"
+                                android:gravity="center"
+                                android:text="—"
+                                android:textColor="@color/black"
+                                android:textSize="40sp" />
+
+                            <TextView
+                                android:id="@+id/time_end"
+                                android:layout_width="130dp"
+                                android:layout_height="45dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginEnd="27dp"
+                                android:background="@color/white"
+                                android:gravity="center"
+                                android:onClick="@{() -> fragment.setTimeEnd()}"
+                                android:text="@{viewmodel.endTime}"
+                                android:textColor="@color/black"
+                                android:textSize="35dp" />
+
+                        </RelativeLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="13dp"
+                            android:layout_marginTop="10dp"
+                            android:text="Группа мышц"
+                            android:textColor="@color/black"
+                            android:textSize="33sp" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="13dp"
+                            android:layout_marginTop="13dp"
+                            android:background="@color/white">
+
+                            <Spinner
+                                android:layout_width="322dp"
+                                android:layout_height="60dp"
+                                android:backgroundTint="@color/black" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="13dp"
+                            android:layout_marginTop="13dp"
+                            android:text="Упражнения"
+                            android:textColor="@color/black"
+                            android:textSize="33sp" />
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="25dp"
+                            android:backgroundTint="#788879"
+                            app:cardCornerRadius="5dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/recycler_added_exercises"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" />
+
+                                <LinearLayout
+                                    android:id="@+id/add_exercise_form"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="40dp">
+
+                                        <EditText
+                                            android:id="@+id/name"
+                                            android:layout_width="200dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_alignParentStart="true"
+                                            android:layout_marginStart="10dp"
+                                            android:layout_marginEnd="5dp"
+                                            android:background="@color/white"
+                                            android:textColor="@color/black" />
+
+                                        <EditText
+                                            android:id="@+id/repetitions"
+                                            android:layout_width="40dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_marginEnd="5dp"
+                                            android:layout_toEndOf="@id/name"
+                                            android:background="@color/white"
+                                            android:textColor="@color/black" />
+
+                                        <EditText
+                                            android:id="@+id/rounds"
+                                            android:layout_width="40dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_marginEnd="5dp"
+                                            android:layout_toEndOf="@id/repetitions"
+                                            android:background="@color/white"
+                                            android:textColor="@color/black" />
+
+                                        <EditText
+                                            android:id="@+id/weight"
+                                            android:layout_width="40dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_toEndOf="@id/rounds"
+                                            android:background="@color/white"
+                                            android:textColor="@color/black" />
+                                    </RelativeLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal"
+                                        android:layout_marginTop="7dp"
+                                        android:orientation="horizontal">
+
+                                        <ImageView
+                                            android:id="@+id/accept"
+                                            android:layout_width="50dp"
+                                            android:layout_height="50dp"
+                                            android:layout_marginEnd="20dp"
+                                            android:onClick="@{() -> fragment.addExercise()}"
+                                            android:src="@drawable/ic_accept" />
+
+                                        <ImageView
+                                            android:id="@+id/cancel"
+                                            android:layout_width="52dp"
+                                            android:layout_height="52dp"
+                                            android:onClick="@{() -> viewmodel.cancelAddExercise()}"
+                                            android:scaleType="fitXY"
+                                            android:src="@drawable/ic_cancel" />
+
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/add_new_exercise"
+                                    android:layout_width="205dp"
+                                    android:layout_height="50dp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:backgroundTint="#3c6763"
+                                    android:onClick="@{() -> viewmodel.addExercise()}"
+                                    app:cardCornerRadius="8dp">
+
+                                    <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:src="@drawable/ic_add_notice" />
+                                </androidx.cardview.widget.CardView>
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
                     </LinearLayout>
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </ScrollView>
     </FrameLayout>
 </layout>

@@ -11,7 +11,7 @@ data class TrainNote(
     val startTime:String,
     val finishTime:String,
     val bodyPart:String,
-    val exercises:List<Exercise>
+//    val exercises:List<Exercise>
 ){
     val duration:String
         get() {
