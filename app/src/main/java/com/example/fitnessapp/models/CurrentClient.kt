@@ -1,15 +1,16 @@
 package com.example.fitnessapp.models
 
 import android.content.Context
+import android.content.Context.MODE_PRIVATE
 
-class CurrentUser(context: Context) {
+class CurrentClient(context: Context) {
     companion object {
-        private const val USER = "user"
+        private const val CLIENT = "client"
         private const val LOGIN = "login"
         private const val NAME = "name"
     }
 
-    private val user = context.getSharedPreferences(USER, Context.MODE_PRIVATE)
+    private val user = context.getSharedPreferences(CLIENT, MODE_PRIVATE)
 
     var login: String
         get() {

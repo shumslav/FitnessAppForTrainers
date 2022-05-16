@@ -7,7 +7,7 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import com.example.fitnessapp.models.CurrentUser
+import com.example.fitnessapp.models.CurrentClient
 import com.example.fitnessapp.models.Exercise
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -21,7 +21,7 @@ class ExercisesViewModel(private val myApplication: Application): AndroidViewMod
     val groupExercises: MutableLiveData<MutableMap<String,MutableList<Exercise>>> = MutableLiveData()
     val selectedGroup: MutableLiveData<String> = MutableLiveData()
     val selectedExercises:MutableLiveData<MutableList<Exercise>> = MutableLiveData()
-    val user = CurrentUser(myApplication)
+    val user = CurrentClient(myApplication)
 
     init {
         getGroupsMuscleAndExercises()

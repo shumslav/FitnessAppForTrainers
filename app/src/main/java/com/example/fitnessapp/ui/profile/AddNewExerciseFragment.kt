@@ -10,11 +10,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.lifecycle.MutableLiveData
-import com.example.fitnessapp.R
 import com.example.fitnessapp.databinding.FragmentAddNewExerciseBinding
-import com.example.fitnessapp.databinding.FragmentExercisesBinding
 import com.example.fitnessapp.enums.Calculation
-import com.example.fitnessapp.models.CurrentUser
+import com.example.fitnessapp.models.CurrentClient
 import com.example.fitnessapp.models.Exercise
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -26,7 +24,7 @@ import makeToast
 
 class AddNewExerciseFragment : Fragment() {
 
-    lateinit var user: CurrentUser
+    lateinit var client: CurrentClient
     lateinit var binding: FragmentAddNewExerciseBinding
     var group: String? = null
 
@@ -35,11 +33,11 @@ class AddNewExerciseFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentAddNewExerciseBinding.inflate(inflater, container, false)
-        user = CurrentUser(requireContext())
+        client = CurrentClient(requireContext())
         val groups: MutableLiveData<MutableList<String>> = MutableLiveData()
         Firebase.database.reference
             .child(NODE_USERS)
-            .child(user.login)
+            .child(client.login)
             .child(NODE_GROUP_MUSCLES).addValueEventListener(
                 object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
@@ -89,7 +87,7 @@ class AddNewExerciseFragment : Fragment() {
             val exercise = Exercise(group, name, rep, isHaveWeight)
             val ref = Firebase.database.reference
                 .child(NODE_USERS)
-                .child(user.login)
+                .child(client.login)
                 .child(NODE_EXERCISES)
                 .child(exercise.bodyPart)
 

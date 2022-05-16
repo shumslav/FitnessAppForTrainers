@@ -8,14 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.fitnessapp.R
 import com.example.fitnessapp.databinding.FragmentProfileBinding
-import com.example.fitnessapp.databinding.FragmentRegistrationBinding
-import com.example.fitnessapp.models.CurrentUser
+import com.example.fitnessapp.models.CurrentClient
 import com.example.fitnessapp.ui.login.EnterActivity
 
 
 class ProfileFragment : Fragment() {
 
-    lateinit var user: CurrentUser
+    lateinit var client: CurrentClient
     lateinit var binding: FragmentProfileBinding
 
     override fun onCreateView(
@@ -23,7 +22,7 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentProfileBinding.inflate(inflater, container, false)
-        user = CurrentUser(requireContext())
+        client = CurrentClient(requireContext())
 
         binding.fragment = this
 
@@ -31,7 +30,7 @@ class ProfileFragment : Fragment() {
     }
 
     fun logout() {
-        user.logout()
+        client.logout()
         requireActivity().startActivity(Intent(requireContext(), EnterActivity::class.java))
     }
 

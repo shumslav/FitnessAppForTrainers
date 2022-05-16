@@ -7,7 +7,7 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.example.fitnessapp.models.CalendarDay
-import com.example.fitnessapp.models.CurrentUser
+import com.example.fitnessapp.models.CurrentClient
 import com.example.fitnessapp.models.TrainNote
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -28,7 +28,7 @@ class ScheduleViewModel(private val myApplication: Application) : AndroidViewMod
     val calendarEnd = Calendar.getInstance()
     var startDate = ""
     var endDate = ""
-    val user = CurrentUser(myApplication)
+    val user = CurrentClient(myApplication)
 
     init {
         isAddNoticeVisible.value = false

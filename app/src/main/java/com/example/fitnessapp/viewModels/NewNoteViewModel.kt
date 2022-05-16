@@ -4,11 +4,10 @@ import NODE_EXERCISES
 import NODE_GROUP_MUSCLES
 import NODE_USERS
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.example.fitnessapp.models.AddedExercise
-import com.example.fitnessapp.models.CurrentUser
+import com.example.fitnessapp.models.CurrentClient
 import com.example.fitnessapp.models.Exercise
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -22,7 +21,7 @@ class NewNoteViewModel(private val myApplication: Application) : AndroidViewMode
     val addedExercises: MutableLiveData<MutableList<AddedExercise>> = MutableLiveData()
     val isAddingNewExercise: MutableLiveData<Boolean> = MutableLiveData()
     val groupsMuscle: MutableLiveData<MutableList<String>> = MutableLiveData()
-    val user = CurrentUser(myApplication)
+    val user = CurrentClient(myApplication)
     val groupExercises: MutableLiveData<MutableMap<String, MutableList<Exercise>>> =
         MutableLiveData()
     val selectedGroup: MutableLiveData<String> = MutableLiveData()

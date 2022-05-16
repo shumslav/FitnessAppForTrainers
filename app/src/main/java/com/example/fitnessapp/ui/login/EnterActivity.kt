@@ -1,19 +1,16 @@
 package com.example.fitnessapp.ui.login
 
-import NODE_PASSWORD
-import NODE_USERS
+import NODE_TRAINERS
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.example.fitnessapp.R
 import com.example.fitnessapp.databinding.ActivityEnterBinding
-import com.example.fitnessapp.databinding.FragmentScheduleBinding
+import com.example.fitnessapp.models.CurrentClient
 import com.example.fitnessapp.models.CurrentUser
 import com.example.fitnessapp.models.User
 import com.example.fitnessapp.ui.MainActivity
-import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -32,7 +29,7 @@ class EnterActivity : AppCompatActivity() {
         user = CurrentUser(this)
 
         if (user.isEnterProfile()) {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, ChooseClientActivity::class.java))
         }
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_enter)
@@ -43,15 +40,14 @@ class EnterActivity : AppCompatActivity() {
         if (checkEmptyFields()) {
             val loginText = binding.login.text.toString()
             val passwordText = binding.password.text.toString()
-            Firebase.database.reference.child(NODE_USERS).addListenerForSingleValueEvent(
+            Firebase.database.reference.child(NODE_TRAINERS).addListenerForSingleValueEvent(
                 object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         if (snapshot.hasChild(loginText)) {
                             val snapshotUser = snapshot.child(loginText).getValue(User::class.java)!!
                             if (passwordText == snapshotUser.password) {
                                 user.login = loginText
-                                user.name = snapshotUser.name
-                                startActivity(Intent(this@EnterActivity, MainActivity::class.java))
+                                startActivity(Intent(this@EnterActivity, ChooseClientActivity::class.java))
                             } else
                                 makeToast(this@EnterActivity, "Неправильный пароль")
                         } else

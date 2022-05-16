@@ -59,7 +59,6 @@ class RegistrationFragment : Fragment() {
                                 .child(NODE_TRAINERS)
                                 .child(login)
                                 .setValue(User(login,password,name))
-                            setStandartGroupAndExercises(login)
                             this@RegistrationFragment.requireActivity().supportFragmentManager.popBackStack()
                         } else
                             makeToast(requireContext(), "Такой пользователь уже есть")
@@ -70,25 +69,6 @@ class RegistrationFragment : Fragment() {
             )
         } else {
             makeToast(requireContext(), "Заполните все поля")
-        }
-    }
-
-    private fun setStandartGroupAndExercises(login: String) {
-        standartGroupMuscles.forEach {
-            Firebase.database.reference
-                .child(NODE_USERS)
-                .child(login)
-                .child(NODE_GROUP_MUSCLES)
-                .child(it).setValue(it)
-        }
-        standartExercises.forEach {
-            Firebase.database.reference
-                .child(NODE_USERS)
-                .child(login)
-                .child(NODE_EXERCISES)
-                .child(it.bodyPart)
-                .child(it.name)
-                .setValue(it)
         }
     }
 }

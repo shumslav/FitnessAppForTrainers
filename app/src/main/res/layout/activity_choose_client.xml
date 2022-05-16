@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.login.ChooseClientActivity"
+        android:background="#efe6c4">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:background="#547a72"
+                    android:gravity="center"
+                    android:text="Выбор клиента"
+                    android:textColor="@color/white"
+                    android:textSize="35sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/clients_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp" />
+
+                <TextView
+                    android:id="@+id/exit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="30sp"
+                    android:layout_marginTop="50dp"
+                    android:text="Выйти"/>
+
+            </LinearLayout>
+        </ScrollView>
+
+    </FrameLayout>
+</layout>

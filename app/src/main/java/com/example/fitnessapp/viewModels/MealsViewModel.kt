@@ -5,7 +5,7 @@ import NODE_USERS
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import com.example.fitnessapp.models.CurrentUser
+import com.example.fitnessapp.models.CurrentClient
 import com.example.fitnessapp.models.Meal
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -16,7 +16,7 @@ import com.google.firebase.ktx.Firebase
 class MealsViewModel(private val myApplication: Application) : AndroidViewModel(myApplication) {
 
     val meals: MutableLiveData<MutableMap<String,Meal>> = MutableLiveData()
-    val user = CurrentUser(myApplication)
+    val user = CurrentClient(myApplication)
     val currentMeal: MutableLiveData<Meal> = MutableLiveData()
 
     val daysOfWeek =

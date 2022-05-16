@@ -7,10 +7,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
-import com.example.fitnessapp.databinding.AddedExerciseCardBinding
 import com.example.fitnessapp.databinding.GroupMusclesCardBinding
 import com.example.fitnessapp.viewModels.GroupMusclesViewModel
-import com.example.fitnessapp.viewModels.NewNoteViewModel
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
@@ -49,7 +47,7 @@ class GroupMusclesAdapter(val viewModel:GroupMusclesViewModel, lifecycleOwner: L
     fun deleteGroupMuscles(groupMuscles: String) {
         Firebase.database.reference
             .child(NODE_USERS)
-            .child(viewModel.user.login)
+            .child(viewModel.client.login)
             .child(NODE_GROUP_MUSCLES)
             .child(groupMuscles)
             .removeValue()
