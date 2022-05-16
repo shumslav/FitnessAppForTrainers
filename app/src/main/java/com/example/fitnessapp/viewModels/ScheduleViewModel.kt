@@ -76,6 +76,7 @@ class ScheduleViewModel(private val myApplication: Application) : AndroidViewMod
         }
         lastPickedDay.value = null
         isAddNoticeVisible.value = false
+        trainNotes.value = mutableListOf()
     }
 
 }

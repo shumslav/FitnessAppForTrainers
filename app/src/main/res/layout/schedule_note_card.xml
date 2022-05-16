@@ -9,6 +9,7 @@
     </data>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/train_note_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="#efe6c4"

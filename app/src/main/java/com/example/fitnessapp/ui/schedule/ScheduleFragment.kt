@@ -49,7 +49,7 @@ class ScheduleFragment : Fragment() {
         binding.viewmodel = viewModel
         binding.recyclerDays.adapter = DaysAdapter(viewModel, this)
         binding.recyclerDays.layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerNotes.adapter = TrainNotesAdapter(viewModel,viewLifecycleOwner)
+        binding.recyclerNotes.adapter = TrainNotesAdapter(viewModel,viewLifecycleOwner, this)
         binding.recyclerNotes.layoutManager = LinearLayoutManager(requireContext())
         binding.fragment = this
 

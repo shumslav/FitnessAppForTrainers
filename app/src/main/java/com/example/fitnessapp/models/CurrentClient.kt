@@ -28,11 +28,6 @@ class CurrentClient(context: Context) {
         }
         set(value) {user.edit().putString(NAME,value).apply()}
 
-
-    fun isEnterProfile():Boolean{
-        return user.contains(LOGIN)
-    }
-
     fun logout(){
         user.edit().remove(LOGIN).remove(NAME).apply()
     }
