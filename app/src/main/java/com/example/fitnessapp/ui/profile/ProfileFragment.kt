@@ -10,6 +10,7 @@ import com.example.fitnessapp.R
 import com.example.fitnessapp.databinding.FragmentProfileBinding
 import com.example.fitnessapp.models.CurrentClient
 import com.example.fitnessapp.models.CurrentUser
+import com.example.fitnessapp.ui.login.ChooseClientActivity
 import com.example.fitnessapp.ui.login.EnterActivity
 
 
@@ -36,6 +37,12 @@ class ProfileFragment : Fragment() {
         client.logout()
         user.logout()
         requireActivity().startActivity(Intent(requireContext(), EnterActivity::class.java))
+        requireActivity().finish()
+    }
+
+    fun clients(){
+        requireActivity().startActivity(Intent(requireContext(), ChooseClientActivity::class.java))
+        requireActivity().finish()
     }
 
     fun groupMuscles() {
