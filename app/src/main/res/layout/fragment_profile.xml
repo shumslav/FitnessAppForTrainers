@@ -89,6 +89,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
+                        android:onClick="@{() -> fragment.exercises()}"
                         app:cardCornerRadius="5dp">
 
                         <TextView
@@ -156,7 +157,7 @@
             </RelativeLayout>
         </LinearLayout>
         <FrameLayout
-            android:id="@+id/container_fragment"
+            android:id="@+id/container_fragment_profile"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </FrameLayout>

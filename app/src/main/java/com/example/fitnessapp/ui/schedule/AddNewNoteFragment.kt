@@ -110,7 +110,6 @@ class AddNewNoteFragment : Fragment() {
                     binding.name.adapter = adapter
                 }
             }
-
         }
 
         viewModel.selectedExercise.observe(viewLifecycleOwner) {

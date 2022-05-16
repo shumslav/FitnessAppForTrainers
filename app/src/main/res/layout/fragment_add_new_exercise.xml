@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#efe6c4">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="vertical"
+            tools:context=".ui.profile.AddNewExerciseFragment">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginBottom="37dp"
+                android:background="#547a72"
+                android:gravity="center"
+                android:text="Новое упражнение"
+                android:textColor="@color/white"
+                android:textSize="35sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="13dp"
+                android:layout_marginBottom="15dp"
+                android:gravity=""
+                android:text="Группа мышц"
+                android:textColor="@color/black"
+                android:textSize="33sp" />
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="13dp"
+                android:layout_marginBottom="30dp"
+                android:background="@color/white">
+
+                <Spinner
+                    android:id="@+id/group"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:backgroundTint="@color/black" />
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="13dp"
+                android:layout_marginBottom="15dp"
+                android:gravity=""
+                android:text="Название упражнения"
+                android:textColor="@color/black"
+                android:textSize="33sp" />
+
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="300dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="13dp"
+                android:layout_marginBottom="30dp"
+                android:background="@color/white" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="13dp"
+                android:layout_marginBottom="15dp"
+                android:gravity=""
+                android:text="Повторения/минуты"
+                android:textColor="@color/black"
+                android:textSize="33sp" />
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="13dp"
+                android:layout_marginBottom="30dp"
+                android:background="@color/white">
+
+                <Spinner
+                    android:id="@+id/repetitions"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:backgroundTint="@color/black" />
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="13dp"
+                android:layout_marginBottom="15dp"
+                android:gravity=""
+                android:text="Дополнительный вес"
+                android:textColor="@color/black"
+                android:textSize="33sp" />
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="13dp"
+                android:layout_marginBottom="30dp"
+                android:background="@color/white">
+
+                <Spinner
+                    android:id="@+id/is_weight"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:backgroundTint="@color/black" />
+            </FrameLayout>
+
+            <ImageView
+                android:id="@+id/add_new_train"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/ic_accept"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
+        </LinearLayout>
+    </ScrollView>
+</layout>
