@@ -63,6 +63,7 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="15dp"
+                android:inputType="textPassword"
                 android:background="@color/white"
                 android:gravity="center" />
 
@@ -74,18 +75,17 @@
                 android:layout_marginTop="35dp"
                 android:background="#64594c"
                 android:gravity="center"
-                android:onClick="@{() -> fragment.enter()}"
                 android:text="Войти"
                 android:textColor="@color/white"
                 android:textSize="30sp" />
 
             <TextView
+                android:id="@+id/registration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="70dp"
                 android:gravity="center"
-                android:onClick="@{() -> fragment.registration()}"
                 android:text="Зарегистрироваться"
                 android:textColor="@color/black"
                 android:textSize="25sp" />

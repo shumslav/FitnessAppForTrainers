@@ -30,6 +30,14 @@
                 android:textColor="@color/black"
                 android:textSize="55sp" />
 
+<!--            <ImageView-->
+<!--                android:id="@+id/image"-->
+<!--                android:layout_width="90dp"-->
+<!--                android:layout_height="90dp"-->
+<!--                android:layout_marginTop="25dp"-->
+<!--                android:src="@drawable/ic_standart_photo"-->
+<!--                android:layout_gravity="center_horizontal"/>-->
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -37,7 +45,7 @@
                 android:gravity="center_horizontal"
                 android:text="Логин"
                 android:textColor="@color/black"
-                android:textSize="30dp" />
+                android:textSize="30sp" />
 
             <EditText
                 android:id="@+id/login"
@@ -55,7 +63,7 @@
                 android:gravity="center_horizontal"
                 android:text="Пароль"
                 android:textColor="@color/black"
-                android:textSize="30dp" />
+                android:textSize="30sp" />
 
             <EditText
                 android:id="@+id/password"
@@ -63,6 +71,7 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="15dp"
+                android:inputType="textPassword"
                 android:background="@color/white"
                 android:gravity="center" />
 
@@ -73,7 +82,7 @@
                 android:gravity="center_horizontal"
                 android:text="Имя и фамилия"
                 android:textColor="@color/black"
-                android:textSize="30dp" />
+                android:textSize="30sp" />
 
             <EditText
                 android:id="@+id/name"

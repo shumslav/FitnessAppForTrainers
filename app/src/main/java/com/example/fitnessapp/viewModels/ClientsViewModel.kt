@@ -2,6 +2,7 @@ package com.example.fitnessapp.viewModels
 
 import NODE_CLIENTS
 import NODE_TRAINERS
+import NODE_USERS
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
@@ -21,15 +22,30 @@ class ClientsViewModel(private val myApplication: Application) : AndroidViewMode
     init {
         Firebase.database.reference.child(NODE_TRAINERS).child(currentUser.login)
             .child(NODE_CLIENTS).addValueEventListener(
-                object: ValueEventListener{
+                object : ValueEventListener {
                     val result = mutableListOf<Client>()
                     override fun onDataChange(snapshot: DataSnapshot) {
                         snapshot.children.forEach {
                             result.add(it.getValue(Client::class.java)!!)
                         }
-                        clients.value = result
-                    }
+                        Firebase.database.reference.child(NODE_USERS)
+                            .addListenerForSingleValueEvent(
+                                object : ValueEventListener {
+                                    override fun onDataChange(snapshot: DataSnapshot) {
+                                        val currentClients = mutableListOf<Client>()
+                                        result.forEach {
+                                            currentClients.add(
+                                                snapshot.child(it.login)
+                                                    .getValue(Client::class.java)!!
+                                            )
+                                        }
+                                        clients.value = currentClients
+                                    }
 
+                                    override fun onCancelled(error: DatabaseError) {}
+                                }
+                            )
+                    }
                     override fun onCancelled(error: DatabaseError) {
                     }
                 }

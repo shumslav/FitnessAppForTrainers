@@ -12,13 +12,13 @@
         <activity
             android:name=".ui.login.ChooseClientActivity"
             android:exported="false"
-            android:noHistory="true"
-            android:launchMode="singleTask"/>
+            android:launchMode="singleTask"
+            android:noHistory="true" />
         <activity
             android:name=".ui.login.EnterActivity"
             android:exported="true"
-            android:noHistory="true"
-            android:launchMode="singleTask">
+            android:launchMode="singleTask"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,7 +29,7 @@
             android:name=".ui.MainActivity"
             android:exported="true"
             android:launchMode="singleTask"
-            android:noHistory="false"/>
+            android:noHistory="false" />
     </application>
 
 </manifest>

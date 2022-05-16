@@ -1,5 +1,6 @@
 package com.example.fitnessapp.models
 
 data class Client(
-    val login:String = "",
-    var name:String = "")
+    var login:String = "",
+    var name:String = "",
+    var image:String? = null)

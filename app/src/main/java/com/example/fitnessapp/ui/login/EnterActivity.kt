@@ -28,12 +28,41 @@ class EnterActivity : AppCompatActivity() {
 
         user = CurrentUser(this)
 
-        if (user.isEnterProfile()) {
-            startActivity(Intent(this, ChooseClientActivity::class.java))
-        }
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_enter)
         binding.fragment = this
+
+        if (user.isEnterProfile()) {
+            Firebase.database.reference.child(NODE_TRAINERS).addListenerForSingleValueEvent(
+                object: ValueEventListener{
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        if (snapshot.hasChild(user.login)){
+                            startActivity(Intent(this@EnterActivity, ChooseClientActivity::class.java))
+                        }
+                        else{
+                            user.logout()
+                            binding.enter.setOnClickListener {
+                                enter()
+                            }
+                            binding.registration.setOnClickListener {
+                                registration()
+                            }
+                        }
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {}
+                }
+            )
+        }
+        else{
+            binding.enter.setOnClickListener {
+                enter()
+            }
+            binding.registration.setOnClickListener {
+                registration()
+            }
+        }
+
+
     }
 
     fun enter() {
