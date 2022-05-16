@@ -15,4 +15,9 @@
         android:id="@+id/mealsFragment"
         android:title="Питание"
         android:icon="@drawable/ic_meal"/>
+
+    <item
+        android:id="@+id/chatFragment"
+        android:title="Чат с клиентом"
+        android:icon="@drawable/ic_message"/>
 </menu>

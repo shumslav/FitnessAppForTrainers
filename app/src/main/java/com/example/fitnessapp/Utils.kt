@@ -14,6 +14,7 @@ val NODE_GROUP_MUSCLES = "GroupMuscles"
 val NODE_EXERCISES = "Exercises"
 val NODE_USERS = "Users"
 val NODE_TRAIN_NOTES = "TrainNotes"
+val NODE_MEALS = "Meals"
 
 fun makeToast(context: Context, text: String) {
     Toast.makeText(context, text, Toast.LENGTH_SHORT).show()

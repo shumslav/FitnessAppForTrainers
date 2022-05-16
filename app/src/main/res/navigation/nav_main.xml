@@ -20,4 +20,9 @@
         android:name="com.example.fitnessapp.ui.meals.MealsFragment"
         android:label="fragment_meals"
         tools:layout="@layout/fragment_meals" />
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.example.fitnessapp.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" />
 </navigation>
