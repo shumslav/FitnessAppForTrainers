@@ -33,7 +33,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="25dp"
                 android:gravity="center_horizontal"
                 android:text="Логин"
                 android:textColor="@color/black"
@@ -51,7 +51,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="20dp"
                 android:gravity="center_horizontal"
                 android:text="Пароль"
                 android:textColor="@color/black"
@@ -59,6 +59,24 @@
 
             <EditText
                 android:id="@+id/password"
+                android:layout_width="284dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:background="@color/white"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
+                android:text="Имя и фамилия"
+                android:textColor="@color/black"
+                android:textSize="30dp" />
+
+            <EditText
+                android:id="@+id/name"
                 android:layout_width="284dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center_horizontal"

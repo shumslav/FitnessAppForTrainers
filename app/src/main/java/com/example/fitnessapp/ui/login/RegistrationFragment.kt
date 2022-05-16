@@ -2,8 +2,9 @@ package com.example.fitnessapp.ui.login
 
 import NODE_EXERCISES
 import NODE_GROUP_MUSCLES
+import NODE_NAME
 import NODE_PASSWORD
-import NODE_PASSWORDS
+import NODE_TRAINERS
 import NODE_USERS
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -13,6 +14,7 @@ import android.view.ViewGroup
 import com.example.fitnessapp.R
 import com.example.fitnessapp.databinding.FragmentRegistrationBinding
 import com.example.fitnessapp.databinding.FragmentScheduleBinding
+import com.example.fitnessapp.models.User
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -39,40 +41,39 @@ class RegistrationFragment : Fragment() {
     }
 
     private fun checkEmptyFields(): Boolean {
-        return (binding.login.text.toString() != "" && binding.password.text.toString() != "")
+        return (binding.login.text.toString() != ""
+                && binding.password.text.toString() != ""
+                && binding.name.text.toString() != "")
     }
 
     fun registration() {
         if (checkEmptyFields()) {
             val login = binding.login.text.toString()
             val password = binding.password.text.toString()
-            makeToast(requireContext(), "Такой пользователь уже есть")
-            Firebase.database.reference.child(NODE_PASSWORDS).addListenerForSingleValueEvent(
+            val name = binding.name.text.toString()
+            Firebase.database.reference.child(NODE_TRAINERS).addListenerForSingleValueEvent(
                 object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         if (!snapshot.hasChild(login)) {
                             Firebase.database.reference
-                                .child(NODE_PASSWORDS)
+                                .child(NODE_TRAINERS)
                                 .child(login)
-                                .child(NODE_PASSWORD)
-                                .setValue(password)
-                            addCommonExercisesAndGroups(login)
+                                .setValue(User(login,password,name))
+                            setStandartGroupAndExercises(login)
                             this@RegistrationFragment.requireActivity().supportFragmentManager.popBackStack()
-                        }
-                        else
+                        } else
                             makeToast(requireContext(), "Такой пользователь уже есть")
                     }
 
                     override fun onCancelled(error: DatabaseError) {}
                 }
             )
-        }
-        else{
-            makeToast(requireContext(),"Заполните все поля")
+        } else {
+            makeToast(requireContext(), "Заполните все поля")
         }
     }
 
-    private fun addCommonExercisesAndGroups(login:String){
+    private fun setStandartGroupAndExercises(login: String) {
         standartGroupMuscles.forEach {
             Firebase.database.reference
                 .child(NODE_USERS)

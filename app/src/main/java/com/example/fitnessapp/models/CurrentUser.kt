@@ -8,7 +8,6 @@ class CurrentUser(context: Context) {
         private const val USER = "user"
         private const val LOGIN = "login"
         private const val NAME = "name"
-        private const val SURNAME = "surname"
     }
 
     private val user = context.getSharedPreferences(USER, MODE_PRIVATE)
@@ -29,19 +28,12 @@ class CurrentUser(context: Context) {
         }
         set(value) {user.edit().putString(NAME,value).apply()}
 
-    var surname: String
-        get() {
-            return if (user.contains(SURNAME))
-                user.getString(SURNAME, "")!!
-            else ""
-        }
-        set(value) {user.edit().putString(SURNAME,value).apply()}
 
     fun isEnterProfile():Boolean{
         return user.contains(LOGIN)
     }
 
     fun logout(){
-        user.edit().remove(LOGIN).remove(NAME).remove(SURNAME).apply()
+        user.edit().remove(LOGIN).remove(NAME).apply()
     }
 }

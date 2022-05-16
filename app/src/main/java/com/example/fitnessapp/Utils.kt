@@ -8,13 +8,15 @@ import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
-val NODE_PASSWORDS = "Passwords"
-val NODE_PASSWORD = "Password"
+val NODE_PASSWORD = "password"
 val NODE_GROUP_MUSCLES = "GroupMuscles"
 val NODE_EXERCISES = "Exercises"
 val NODE_USERS = "Users"
 val NODE_TRAIN_NOTES = "TrainNotes"
 val NODE_MEALS = "Meals"
+val NODE_NAME = "Name"
+val NODE_CLIENTS = "Clients"
+val NODE_TRAINERS = "Trainers"
 
 fun makeToast(context: Context, text: String) {
     Toast.makeText(context, text, Toast.LENGTH_SHORT).show()

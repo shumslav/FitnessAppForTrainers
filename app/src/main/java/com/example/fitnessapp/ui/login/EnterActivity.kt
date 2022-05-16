@@ -1,7 +1,7 @@
 package com.example.fitnessapp.ui.login
 
 import NODE_PASSWORD
-import NODE_PASSWORDS
+import NODE_USERS
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +11,7 @@ import com.example.fitnessapp.R
 import com.example.fitnessapp.databinding.ActivityEnterBinding
 import com.example.fitnessapp.databinding.FragmentScheduleBinding
 import com.example.fitnessapp.models.CurrentUser
+import com.example.fitnessapp.models.User
 import com.example.fitnessapp.ui.MainActivity
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
@@ -42,17 +43,14 @@ class EnterActivity : AppCompatActivity() {
         if (checkEmptyFields()) {
             val loginText = binding.login.text.toString()
             val passwordText = binding.password.text.toString()
-            Firebase.database.reference.child(NODE_PASSWORDS).addListenerForSingleValueEvent(
+            Firebase.database.reference.child(NODE_USERS).addListenerForSingleValueEvent(
                 object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         if (snapshot.hasChild(loginText)) {
-                            val password =
-                                snapshot
-                                    .child(loginText)
-                                    .child(NODE_PASSWORD)
-                                    .getValue(String::class.java)
-                            if (passwordText == password) {
+                            val snapshotUser = snapshot.child(loginText).getValue(User::class.java)!!
+                            if (passwordText == snapshotUser.password) {
                                 user.login = loginText
+                                user.name = snapshotUser.name
                                 startActivity(Intent(this@EnterActivity, MainActivity::class.java))
                             } else
                                 makeToast(this@EnterActivity, "Неправильный пароль")
