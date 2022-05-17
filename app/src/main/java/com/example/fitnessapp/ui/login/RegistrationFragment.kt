@@ -72,15 +72,12 @@ class RegistrationFragment : Fragment() {
                                         }
 
                                         override fun onCancelled(error: DatabaseError) {}
-                                    }
-                                )
-                        } else
-                            makeToast(requireContext(), "Такой пользователь уже есть")
+                                    })
+                        } else makeToast(requireContext(), "Такой пользователь уже есть")
                     }
 
                     override fun onCancelled(error: DatabaseError) {}
-                }
-            )
+                })
         } else {
             makeToast(requireContext(), "Заполните все поля")
         }

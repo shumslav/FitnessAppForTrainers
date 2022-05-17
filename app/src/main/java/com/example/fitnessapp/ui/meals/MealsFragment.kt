@@ -65,9 +65,8 @@ class MealsFragment : Fragment() {
             Firebase.database.reference.child(NODE_USERS).child(viewModel.user.login)
                 .child(NODE_MEALS)
                 .child(meal.weekDay)
-                .setValue(meal)
-            viewModel.getMeals()
-            makeToast(requireContext(),"Данные сохранены")
+                .setValue(meal).addOnSuccessListener {
+                    makeToast(requireContext(),"Данные сохранены") }
         }
 
         return binding.root

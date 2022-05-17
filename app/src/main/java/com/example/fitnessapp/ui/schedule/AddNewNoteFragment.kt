@@ -251,18 +251,11 @@ class AddNewNoteFragment : Fragment() {
     fun addNote() {
         if (viewModel.startTime.isEmpty() || viewModel.endTime.isEmpty()) {
             makeToast(requireContext(), "Не указано время")
-            return
-        }
+            return }
         if (viewModel.addedExercises.value.isNullOrEmpty()) {
             makeToast(requireContext(), "Не добавлено ни одного упражнения")
-            return
-        }
-        val ref = Firebase.database.reference
-            .child(NODE_USERS)
-            .child(viewModel.user.login)
-            .child(NODE_TRAIN_NOTES)
-            .child(date!!)
-
+            return }
+        val ref = Firebase.database.reference.child(NODE_USERS).child(viewModel.user.login).child(NODE_TRAIN_NOTES).child(date!!)
         ref.addListenerForSingleValueEvent(
             object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
@@ -270,28 +263,17 @@ class AddNewNoteFragment : Fragment() {
                     snapshot.children.forEach {
                         val id = it.child("id").getValue(Int::class.java)
                         if (id != null)
-                            if (maxId < id)
-                                maxId = id
+                            if (maxId < id) maxId = id
                     }
                     val trainNote = TrainNote(
-                        maxId + 1,
-                        date!!,
-                        viewModel.startTime,
-                        viewModel.endTime,
-                        viewModel.selectedGroup.value!!,
-                        viewModel.addedExercises.value!!,
-                        binding.notes.text.toString()
-                    )
+                        maxId + 1, date!!, viewModel.startTime, viewModel.endTime,
+                        viewModel.selectedGroup.value!!, viewModel.addedExercises.value!!, binding.notes.text.toString())
                     ref.child("${maxId + 1}").setValue(trainNote)
                     val viewModelSchedule = ViewModelProvider(requireActivity())[ScheduleViewModel::class.java]
                     viewModelSchedule.getTrainNotes()
                     requireActivity().supportFragmentManager.popBackStack()
                 }
-
-                override fun onCancelled(error: DatabaseError) {}
-            }
-        )
-
+                override fun onCancelled(error: DatabaseError) {} })
     }
 
     companion object {

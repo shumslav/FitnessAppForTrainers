@@ -36,33 +36,17 @@ class EnterActivity : AppCompatActivity() {
                 object: ValueEventListener{
                     override fun onDataChange(snapshot: DataSnapshot) {
                         if (snapshot.hasChild(user.login)){
-                            startActivity(Intent(this@EnterActivity, ChooseClientActivity::class.java))
-                        }
+                            startActivity(Intent(this@EnterActivity, ChooseClientActivity::class.java)) }
                         else{
                             user.logout()
-                            binding.enter.setOnClickListener {
-                                enter()
-                            }
-                            binding.registration.setOnClickListener {
-                                registration()
-                            }
-                        }
-                    }
-
-                    override fun onCancelled(error: DatabaseError) {}
-                }
-            )
-        }
+                            binding.enter.setOnClickListener { enter() }
+                            binding.registration.setOnClickListener { registration() } }
+                    } override fun onCancelled(error: DatabaseError) {}
+                }) }
         else{
-            binding.enter.setOnClickListener {
-                enter()
-            }
-            binding.registration.setOnClickListener {
-                registration()
-            }
+            binding.enter.setOnClickListener { enter() }
+            binding.registration.setOnClickListener { registration() }
         }
-
-
     }
 
     fun enter() {

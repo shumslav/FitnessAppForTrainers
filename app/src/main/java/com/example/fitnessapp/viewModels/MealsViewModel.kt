@@ -30,7 +30,7 @@ class MealsViewModel(private val myApplication: Application) : AndroidViewModel(
         Firebase.database.reference
             .child(NODE_USERS)
             .child(user.login)
-            .child(NODE_MEALS).addListenerForSingleValueEvent(
+            .child(NODE_MEALS).addValueEventListener(
                 object:ValueEventListener{
                     override fun onDataChange(snapshot: DataSnapshot) {
                         val currentMeals = mutableMapOf<String,Meal>()

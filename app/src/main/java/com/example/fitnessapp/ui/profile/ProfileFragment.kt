@@ -46,14 +46,14 @@ class ProfileFragment : Fragment() {
     }
 
     fun groupMuscles() {
-        requireActivity().supportFragmentManager.beginTransaction()
+        childFragmentManager.beginTransaction()
             .add(R.id.container_fragment_profile, GroupMusclesFragment())
             .addToBackStack("group_muscles")
             .commit()
     }
 
     fun exercises() {
-        requireActivity().supportFragmentManager.beginTransaction()
+        childFragmentManager.beginTransaction()
             .add(R.id.container_fragment_profile, ExercisesFragment())
             .addToBackStack("exercises")
             .commit()

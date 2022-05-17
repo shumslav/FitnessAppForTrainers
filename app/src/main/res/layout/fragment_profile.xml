@@ -87,8 +87,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
                         android:onClick="@{() -> fragment.exercises()}"
+                        android:orientation="vertical"
                         app:cardCornerRadius="5dp">
 
                         <TextView
@@ -158,8 +158,8 @@
                     android:layout_width="140dp"
                     android:layout_height="140dp"
                     android:layout_below="@id/my_exercises"
-                    android:layout_marginStart="35dp"
                     android:layout_alignParentStart="true"
+                    android:layout_marginStart="35dp"
                     android:layout_marginTop="52dp"
                     android:backgroundTint="#AA3E3E"
                     android:elevation="8dp"
@@ -190,12 +190,13 @@
 
                 </androidx.cardview.widget.CardView>
 
-                <FrameLayout
-                    android:id="@+id/container_fragment_profile"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+
             </RelativeLayout>
         </LinearLayout>
 
+        <FrameLayout
+            android:id="@+id/container_fragment_profile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </FrameLayout>
 </layout>

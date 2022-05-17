@@ -83,14 +83,9 @@ class AddNewExerciseFragment : Fragment() {
             else
                 Calculation.REPETITIONS
             val isHaveWeight = binding.isWeight.selectedItem as String != "Нету"
-
             val exercise = Exercise(group, name, rep, isHaveWeight)
-            val ref = Firebase.database.reference
-                .child(NODE_USERS)
-                .child(client.login)
-                .child(NODE_EXERCISES)
+            val ref = Firebase.database.reference.child(NODE_USERS).child(client.login).child(NODE_EXERCISES)
                 .child(exercise.bodyPart)
-
             ref.addListenerForSingleValueEvent(
                 object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
@@ -99,14 +94,8 @@ class AddNewExerciseFragment : Fragment() {
                         else {
                             ref.child(exercise.name).setValue(exercise)
                             requireActivity().onBackPressed()
-                        }
-                    }
-
-                    override fun onCancelled(error: DatabaseError) {
-
-                    }
-                }
-            )
+                        } }
+                    override fun onCancelled(error: DatabaseError) {} })
         }
         return binding.root
     }
