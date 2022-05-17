@@ -59,7 +59,6 @@ class DaysAdapter(val viewmodel: ScheduleViewModel, lifecycleOwner: LifecycleOwn
                     notifyItemChanged(id)
                 }
                 id = holder.adapterPosition
-                Log.i("ID day", id.toString())
                 notifyItemChanged(holder.adapterPosition)
 
             }
@@ -74,24 +73,5 @@ class DaysAdapter(val viewmodel: ScheduleViewModel, lifecycleOwner: LifecycleOwn
 
     override fun getItemCount(): Int {
         return viewmodel.datesData.value?.size ?: 0
-    }
-
-    private fun onClickDay(holder: DayCardHolder, calendarDay: CalendarDay) {
-        viewmodel.isAddNoticeVisible.value = true
-        if (id != -1) {
-//            lastPosition!!.setCardBackgroundColor(Color.WHITE)
-//            id = holder.adapterPosition
-            notifyItemChanged(id)
-        }
-        holder.binding.cardDay.setCardBackgroundColor(Color.rgb(157, 157, 157))
-        lastPosition = holder.binding.cardDay
-        id = holder.adapterPosition
-        Log.i("Day ID", id.toString())
-        viewmodel.lastPickedDay.value = calendarDay
-        viewmodel.getTrainNotes()
-    }
-
-    fun isSelected(){
-
     }
 }

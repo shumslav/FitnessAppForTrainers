@@ -36,29 +36,55 @@ class ScheduleViewModel(private val myApplication: Application) : AndroidViewMod
         setDates()
     }
 
+//    fun getTrainNotes() {
+//        if (lastPickedDay.value == null)
+//            return
+//        Firebase.database.reference
+//            .child(NODE_USERS)
+//            .child(user.login)
+//            .child(NODE_TRAIN_NOTES)
+//            .child(lastPickedDay.value!!.dateString).addListenerForSingleValueEvent(
+//                object : ValueEventListener {
+//                    val result = mutableListOf<TrainNote>()
+//                    override fun onDataChange(snapshot: DataSnapshot) {
+//                        snapshot.children.forEach {
+//                            result.add(it.getValue(TrainNote::class.java)!!)
+//                        }
+//                        trainNotes.value = result
+//                    }
+//
+//                    override fun onCancelled(error: DatabaseError) {
+//                    }
+//                }
+//            )
+//    }
+
     fun getTrainNotes() {
-        if (lastPickedDay.value==null)
-            return
         Firebase.database.reference
             .child(NODE_USERS)
             .child(user.login)
-            .child(NODE_TRAIN_NOTES)
-            .child(lastPickedDay.value!!.dateString).addListenerForSingleValueEvent(
-                object : ValueEventListener{
-                    val result = mutableListOf<TrainNote>()
+            .child(NODE_TRAIN_NOTES).addValueEventListener(
+                object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
-                        snapshot.children.forEach {
-                            result.add(it.getValue(TrainNote::class.java)!!)
+                        val result = mutableMapOf<String, MutableList<TrainNote>>()
+                        snapshot.children.forEach { date ->
+                            val day = date.key!!.replace(":",".")
+                            val trainNotesForDay = mutableListOf<TrainNote>()
+                            date.children.forEach {
+                                trainNotesForDay.add(it.getValue(TrainNote::class.java)!!)
+                            }
+                            result[day] = trainNotesForDay
                         }
                         trainNotes.value = result
                     }
+
                     override fun onCancelled(error: DatabaseError) {
                     }
                 }
             )
     }
 
-    fun setDates(){
+    fun setDates() {
         val startTime = calendarStart.time
         val endTime = calendarEnd.time
         startDate = startTime.toString().split(" ")[2] +
@@ -71,7 +97,7 @@ class ScheduleViewModel(private val myApplication: Application) : AndroidViewMod
         Log.i("DATES", endDate)
         datesData.value = getDates(startDate, endDate)
         datesData.value!!.forEach {
-            if (lastPickedDay.value?.dateString==it.dateString)
+            if (lastPickedDay.value?.dateString == it.dateString)
                 return
         }
         lastPickedDay.value = null
