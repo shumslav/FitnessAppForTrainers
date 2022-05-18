@@ -19,8 +19,14 @@ class TrainNotesAdapter(
 ) :
     RecyclerView.Adapter<TrainNotesAdapter.TrainNotesHolder>() {
 
+    var pickedDate: String? = null
+
     init {
         viewmodel.trainNotes.observe(lifecycleOwner) {
+            notifyDataSetChanged()
+        }
+        viewmodel.lastPickedDay.observe(lifecycleOwner) {
+            pickedDate = it?.dateString
             notifyDataSetChanged()
         }
     }
@@ -39,26 +45,40 @@ class TrainNotesAdapter(
     }
 
     override fun onBindViewHolder(holder: TrainNotesHolder, position: Int) {
-        if (viewmodel.trainNotes.value != null) {
-            val trainNote = viewmodel.trainNotes.value!![position]
-            holder.binding.trainNote = trainNote
-            if (trainNote.isCompleted)
-                holder.binding.status.text = "Выполнена"
-            else
-                holder.binding.status.text = "Не выполнена"
-            holder.binding.trainNoteCard.setOnClickListener {
-                fragment.childFragmentManager.beginTransaction()
-                    .add(
-                        R.id.fragment_container,
-                        TrainNoteFragment.newInstance(trainNote.date, trainNote.id.toString())
-                    )
-                    .addToBackStack("TrainNoteFragment")
-                    .commit()
+        if (pickedDate != null) {
+            if (viewmodel.trainNotes.value != null) {
+                if (viewmodel.trainNotes.value!!.containsKey(pickedDate)) {
+                    val trainNote = viewmodel.trainNotes.value!![pickedDate]!![position]
+                    holder.binding.trainNote = trainNote
+                    if (trainNote.isCompleted)
+                        holder.binding.status.text = "Выполнена"
+                    else
+                        holder.binding.status.text = "Не выполнена"
+                    holder.binding.trainNoteCard.setOnClickListener {
+                        fragment.childFragmentManager.beginTransaction()
+                            .add(
+                                R.id.fragment_container,
+                                TrainNoteFragment.newInstance(
+                                    trainNote.date,
+                                    trainNote.id.toString()
+                                )
+                            )
+                            .addToBackStack("TrainNoteFragment")
+                            .commit()
+                    }
+                }
             }
         }
     }
 
     override fun getItemCount(): Int {
-        return viewmodel.trainNotes.value?.size ?: 0
+        if (pickedDate == null)
+            return 0
+        if (viewmodel.trainNotes.value.isNullOrEmpty())
+            return 0
+        if (!viewmodel.trainNotes.value!!.containsKey(pickedDate))
+            return 0
+        else
+            return viewmodel.trainNotes.value!![pickedDate]!!.size
     }
 }

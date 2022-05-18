@@ -60,12 +60,6 @@ class ScheduleFragment : Fragment() {
                 binding.addNotice.visibility = View.GONE
         }
 
-        viewModel.lastPickedDay.observe(viewLifecycleOwner) {
-            if (it != null) {
-                viewModel.getTrainNotes()
-            }
-        }
-
         binding.addNotice.setOnClickListener {
             if(viewModel.lastPickedDay.value != null) {
                 childFragmentManager.beginTransaction()

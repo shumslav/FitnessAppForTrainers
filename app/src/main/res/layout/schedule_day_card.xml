@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="calendarDay"
             type="com.example.fitnessapp.models.CalendarDay" />
@@ -12,8 +13,8 @@
         android:id="@+id/card_day"
         android:layout_width="110dp"
         android:layout_height="wrap_content"
-        app:strokeColor="#9E9D9D"
         app:cardBackgroundColor="@color/day_card_back"
+        app:strokeColor="#9E9D9D"
         app:strokeWidth="1dp">
 
         <RelativeLayout
@@ -25,8 +26,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="@color/white"
                 android:text="@{calendarDay.month}"
+                android:textColor="@color/white"
                 android:textSize="35sp" />
 
 
@@ -39,6 +40,57 @@
                 android:text="@{calendarDay.day}"
                 android:textColor="@color/white"
                 android:textSize="65sp" />
+
+            <RelativeLayout
+                android:id="@+id/trainNotes_form"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/day"
+                android:layout_marginBottom="4dp"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/completed_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:backgroundTint="#4BDD00"
+                    android:visibility="visible"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="10dp"
+                    app:cardCornerRadius="360dp">
+                    <TextView
+                        android:id="@+id/count_completed_trains"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        android:text=""
+                        android:textColor="@color/black" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/uncompleted_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_alignParentEnd="true"
+                    android:visibility="visible"
+                    android:backgroundTint="#D62A0C"
+                    app:cardCornerRadius="360dp">
+
+                    <TextView
+                        android:id="@+id/count_uncompleted_trains"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:text=""
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black" />
+                </androidx.cardview.widget.CardView>
+            </RelativeLayout>
 
         </RelativeLayout>
 

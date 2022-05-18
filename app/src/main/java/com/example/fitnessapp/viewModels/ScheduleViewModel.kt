@@ -23,7 +23,7 @@ class ScheduleViewModel(private val myApplication: Application) : AndroidViewMod
     val datesData: MutableLiveData<MutableList<CalendarDay>> = MutableLiveData()
     val isAddNoticeVisible: MutableLiveData<Boolean> = MutableLiveData()
     var lastPickedDay: MutableLiveData<CalendarDay?> = MutableLiveData()
-    val trainNotes: MutableLiveData<MutableList<TrainNote>> = MutableLiveData()
+    val trainNotes: MutableLiveData<MutableMap<String,MutableList<TrainNote>>> = MutableLiveData()
     val calendarStart = Calendar.getInstance()
     val calendarEnd = Calendar.getInstance()
     var startDate = ""
@@ -34,6 +34,7 @@ class ScheduleViewModel(private val myApplication: Application) : AndroidViewMod
         isAddNoticeVisible.value = false
         calendarEnd.add(Calendar.DATE, 30)
         setDates()
+        getTrainNotes()
     }
 
 //    fun getTrainNotes() {
@@ -68,7 +69,7 @@ class ScheduleViewModel(private val myApplication: Application) : AndroidViewMod
                     override fun onDataChange(snapshot: DataSnapshot) {
                         val result = mutableMapOf<String, MutableList<TrainNote>>()
                         snapshot.children.forEach { date ->
-                            val day = date.key!!.replace(":",".")
+                            val day = date.key!!
                             val trainNotesForDay = mutableListOf<TrainNote>()
                             date.children.forEach {
                                 trainNotesForDay.add(it.getValue(TrainNote::class.java)!!)
@@ -102,7 +103,6 @@ class ScheduleViewModel(private val myApplication: Application) : AndroidViewMod
         }
         lastPickedDay.value = null
         isAddNoticeVisible.value = false
-        trainNotes.value = mutableListOf()
     }
 
 }

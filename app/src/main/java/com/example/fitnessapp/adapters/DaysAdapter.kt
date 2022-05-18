@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
@@ -29,14 +30,14 @@ class DaysAdapter(val viewmodel: ScheduleViewModel, lifecycleOwner: LifecycleOwn
             lastCalendarDay = null
             this@DaysAdapter.notifyDataSetChanged()
         }
+        viewmodel.trainNotes.observe(
+            lifecycleOwner
+        ) {
+            this@DaysAdapter.notifyDataSetChanged()
+        }
     }
 
     class DayCardHolder(val binding: ScheduleDayCardBinding) : RecyclerView.ViewHolder(binding.root){
-        init {
-            binding.cardDay.setOnClickListener {
-
-            }
-        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DayCardHolder {
@@ -48,10 +49,12 @@ class DaysAdapter(val viewmodel: ScheduleViewModel, lifecycleOwner: LifecycleOwn
     @SuppressLint("ResourceAsColor")
     override fun onBindViewHolder(holder: DayCardHolder, position: Int) {
         if (!viewmodel.datesData.value.isNullOrEmpty()) {
-            val datesValue = viewmodel.datesData.value!!
-            val calendarDay = datesValue[position]
+            val calendarDay = viewmodel.datesData.value!![position]
             holder.binding.calendarDay = calendarDay
-
+            holder.binding.countCompletedTrains.text = ""
+            holder.binding.countUncompletedTrains.text = ""
+            holder.binding.completedCard.visibility = View.GONE
+            holder.binding.uncompletedCard.visibility = View.GONE
             holder.binding.cardDay.setOnClickListener {
                 viewmodel.isAddNoticeVisible.value = true
                 viewmodel.lastPickedDay.value = calendarDay
@@ -68,6 +71,35 @@ class DaysAdapter(val viewmodel: ScheduleViewModel, lifecycleOwner: LifecycleOwn
             }
             else
                 holder.binding.cardDay.setCardBackgroundColor(Color.rgb(164,143,116))
+            if (!viewmodel.trainNotes.value.isNullOrEmpty()){
+                if (viewmodel.trainNotes.value!!.containsKey(calendarDay.dateString)){
+                    val trainNotesInDay = viewmodel.trainNotes.value!![calendarDay.dateString]!!
+                    var countCompleted = 0
+                    var countUncompleted  = 0
+                    trainNotesInDay.forEach {
+                        if (it.isCompleted)
+                            countCompleted+=1
+                        else
+                            countUncompleted+=1
+                    }
+                    if (countCompleted>0) {
+                        holder.binding.countCompletedTrains.text = countCompleted.toString()
+                        holder.binding.completedCard.visibility = View.VISIBLE
+                    }
+                    else {
+                        holder.binding.countCompletedTrains.text = ""
+                        holder.binding.completedCard.visibility = View.GONE
+                    }
+                    if (countUncompleted>0) {
+                        holder.binding.countUncompletedTrains.text = countUncompleted.toString()
+                        holder.binding.uncompletedCard.visibility = View.VISIBLE
+                    }
+                    else {
+                        holder.binding.countUncompletedTrains.text = ""
+                        holder.binding.uncompletedCard.visibility = View.GONE
+                    }
+                }
+            }
         }
     }
 
