@@ -54,32 +54,28 @@ class RegistrationFragment : Fragment() {
                 object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         if (!snapshot.hasChild(login)) {
-                            Firebase.database.reference.child(NODE_USERS)
+                            Firebase.database.reference
+                                .child(NODE_USERS)
                                 .addListenerForSingleValueEvent(
                                     object : ValueEventListener {
                                         override fun onDataChange(snapshot: DataSnapshot) {
                                             if (!snapshot.hasChild(login)) {
                                                 Firebase.database.reference
-                                                    .child(NODE_TRAINERS)
-                                                    .child(login)
+                                                    .child(NODE_TRAINERS).child(login)
                                                     .setValue(User(login, password, name))
-                                                this@RegistrationFragment.requireActivity().supportFragmentManager.popBackStack()
+                                                makeToast(requireContext(),
+                                                    "Пользователь успешно зарегистрирован")
+                                                this@RegistrationFragment
+                                                    .requireActivity()
+                                                    .supportFragmentManager.popBackStack()
                                             } else
-                                                makeToast(
-                                                    requireContext(),
-                                                    "Такой пользователь уже есть"
-                                                )
-                                        }
-
-                                        override fun onCancelled(error: DatabaseError) {}
-                                    })
-                        } else makeToast(requireContext(), "Такой пользователь уже есть")
-                    }
-
-                    override fun onCancelled(error: DatabaseError) {}
-                })
-        } else {
-            makeToast(requireContext(), "Заполните все поля")
-        }
+                                                makeToast(requireContext(),
+                                                    "Такой пользователь уже есть") }
+                                        override fun onCancelled(error: DatabaseError) {} })
+                        } else makeToast(requireContext(),
+                            "Такой пользователь уже есть") }
+                    override fun onCancelled(error: DatabaseError) {} })
+        } else { makeToast(requireContext(),
+            "Заполните все поля") }
     }
 }

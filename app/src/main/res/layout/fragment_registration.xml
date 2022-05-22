@@ -102,7 +102,7 @@
                 android:background="#b3a084"
                 android:gravity="center"
                 android:onClick="@{() -> fragment.registration()}"
-                android:text="Зарегестрироваться"
+                android:text="Зарегистрироваться"
                 android:textColor="@color/black"
                 android:textSize="30sp" />
         </LinearLayout>

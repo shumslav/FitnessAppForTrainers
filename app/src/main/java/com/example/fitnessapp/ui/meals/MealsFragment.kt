@@ -62,7 +62,8 @@ class MealsFragment : Fragment() {
             meal.carbohydrates = binding.carbohydrates.text.toString()
             meal.notes = binding.notes.text.toString()
 
-            Firebase.database.reference.child(NODE_USERS).child(viewModel.user.login)
+            Firebase.database.reference.child(NODE_USERS)
+                .child(viewModel.user.login)
                 .child(NODE_MEALS)
                 .child(meal.weekDay)
                 .setValue(meal).addOnSuccessListener {

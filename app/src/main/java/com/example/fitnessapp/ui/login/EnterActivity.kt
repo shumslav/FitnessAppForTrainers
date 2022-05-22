@@ -32,17 +32,23 @@ class EnterActivity : AppCompatActivity() {
         binding.fragment = this
 
         if (user.isEnterProfile()) {
-            Firebase.database.reference.child(NODE_TRAINERS).addListenerForSingleValueEvent(
+            Firebase.database.reference
+                .child(NODE_TRAINERS).addListenerForSingleValueEvent(
                 object: ValueEventListener{
                     override fun onDataChange(snapshot: DataSnapshot) {
                         if (snapshot.hasChild(user.login)){
-                            startActivity(Intent(this@EnterActivity, ChooseClientActivity::class.java)) }
+                            startActivity(Intent(this@EnterActivity,
+                                ChooseClientActivity::class.java)) }
                         else{
                             user.logout()
                             binding.enter.setOnClickListener { enter() }
-                            binding.registration.setOnClickListener { registration() } }
-                    } override fun onCancelled(error: DatabaseError) {}
-                }) }
+                            binding.registration.setOnClickListener { registration() }}
+                    } override fun onCancelled(error: DatabaseError) {
+                        binding.enter.setOnClickListener { enter() }
+                        binding.registration
+                            .setOnClickListener { registration() }
+                    } })
+        }
         else{
             binding.enter.setOnClickListener { enter() }
             binding.registration.setOnClickListener { registration() }
@@ -53,25 +59,25 @@ class EnterActivity : AppCompatActivity() {
         if (checkEmptyFields()) {
             val loginText = binding.login.text.toString()
             val passwordText = binding.password.text.toString()
-            Firebase.database.reference.child(NODE_TRAINERS).addListenerForSingleValueEvent(
+            Firebase.database.reference
+                .child(NODE_TRAINERS).addListenerForSingleValueEvent(
                 object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         if (snapshot.hasChild(loginText)) {
-                            val snapshotUser = snapshot.child(loginText).getValue(User::class.java)!!
+                            val snapshotUser = snapshot
+                                .child(loginText).getValue(User::class.java)!!
                             if (passwordText == snapshotUser.password) {
                                 user.login = loginText
-                                startActivity(Intent(this@EnterActivity, ChooseClientActivity::class.java))
+                                startActivity(Intent(this@EnterActivity,
+                                    ChooseClientActivity::class.java))
                             } else
-                                makeToast(this@EnterActivity, "Неправильный пароль")
+                                makeToast(this@EnterActivity,
+                                    "Неправильный пароль")
                         } else
-                            makeToast(this@EnterActivity, "Пользователь не найден")
-                    }
-
-                    override fun onCancelled(error: DatabaseError) {}
-                }
-            )
-        } else
-            makeToast(this, "Заполните все поля")
+                            makeToast(this@EnterActivity,
+                                "Пользователь не найден")
+                    } override fun onCancelled(error: DatabaseError) {} })
+        } else makeToast(this, "Заполните все поля")
     }
 
     private fun checkEmptyFields(): Boolean {

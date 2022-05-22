@@ -16,11 +16,8 @@ import com.example.fitnessapp.viewModels.NewNoteViewModel
 class MessagesAdapter(val viewmodel: ChatViewModel, lifecycleOwner: LifecycleOwner) :
     RecyclerView.Adapter<MessagesAdapter.MessagesHolder>() {
 
-    var lastDate = ""
-
     init {
         viewmodel.messages.observe(lifecycleOwner){
-            lastDate = ""
             this.notifyDataSetChanged()
         }
     }
@@ -41,16 +38,28 @@ class MessagesAdapter(val viewmodel: ChatViewModel, lifecycleOwner: LifecycleOwn
                 holder.binding.messageRight.text = message.text
                 holder.binding.timeRight.text = message.time
                 holder.binding.messagesFormRight.visibility = View.VISIBLE
+                holder.binding.messagesFormLeft.visibility = View.GONE
             }
             else{
                 holder.binding.messageLeft.text = message.text
                 holder.binding.timeLeft.text = message.time
                 holder.binding.messagesFormLeft.visibility = View.VISIBLE
+                holder.binding.messagesFormRight.visibility = View.GONE
             }
-            if(lastDate!=message.date.replace(":",".")){
+
+            if (position==0){
                 holder.binding.date.text = message.date.replace(":",".")
                 holder.binding.dateCard.visibility = View.VISIBLE
-                lastDate = message.date.replace(":",".")
+            }
+            else {
+                val lastMessage = viewmodel.messages.value!![position-1]
+                if (lastMessage.date!=message.date){
+                    holder.binding.date.text = message.date.replace(":",".")
+                    holder.binding.dateCard.visibility = View.VISIBLE
+                }
+                else{
+                    holder.binding.dateCard.visibility = View.GONE
+                }
             }
         }
     }

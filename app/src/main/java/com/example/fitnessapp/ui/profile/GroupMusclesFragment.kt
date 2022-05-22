@@ -22,7 +22,7 @@ import makeToast
 
 class GroupMusclesFragment : Fragment() {
 
-    lateinit var viewModel:GroupMusclesViewModel
+    lateinit var viewModel: GroupMusclesViewModel
     lateinit var client: CurrentClient
     lateinit var binding: FragmentGroupMusclesBinding
 
@@ -33,7 +33,7 @@ class GroupMusclesFragment : Fragment() {
         binding = FragmentGroupMusclesBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(requireActivity())[GroupMusclesViewModel::class.java]
         client = CurrentClient(requireContext())
-        val adapter = GroupMusclesAdapter(viewModel,this)
+        val adapter = GroupMusclesAdapter(viewModel, this)
 
         binding.recycler.adapter = adapter
         binding.recycler.layoutManager = LinearLayoutManager(requireContext())
@@ -53,41 +53,27 @@ class GroupMusclesFragment : Fragment() {
         return binding.root
     }
 
-    fun addNewGroup(){
+    fun addNewGroup() {
         viewModel.isAddingNewGroup.value = true
     }
 
-    fun acceptNewGroup(){
+    fun acceptNewGroup() {
         val newGroup = binding.newGroup.text.toString()
-        if ( newGroup != ""){
-            val ref =Firebase.database.reference
-                .child(NODE_USERS)
-                .child(client.login)
-                .child(NODE_GROUP_MUSCLES)
-
-            ref.addListenerForSingleValueEvent(
-                    object: ValueEventListener{
-                        override fun onDataChange(snapshot: DataSnapshot) {
-                            if (!snapshot.hasChild(newGroup)){
-                                ref.child(newGroup).setValue(newGroup)
-                            }
-                            else
-                                makeToast(requireContext(),"Такая группа уже есть")
-                        }
-
-                        override fun onCancelled(error: DatabaseError) {
-
-                        }
-                    }
-                )
-            viewModel.isAddingNewGroup.value = false
-        }
-        else{
-            makeToast(requireContext(), "Название пустое")
-        }
-
+        if (newGroup != "") {
+            if (!viewModel.groupMuscles.value!!.contains(newGroup)) {
+                Firebase.database.reference
+                    .child(NODE_USERS)
+                    .child(client.login)
+                    .child(NODE_GROUP_MUSCLES)
+                    .child(newGroup).setValue(newGroup)
+                viewModel.isAddingNewGroup.value = false
+            } else
+                makeToast(requireContext(), "Такая группа уже есть")
+        } else {
+            makeToast(requireContext(), "Название пустое") }
     }
-    fun cancelAddNewGroup(){
+
+    fun cancelAddNewGroup() {
         viewModel.isAddingNewGroup.value = false
     }
 }

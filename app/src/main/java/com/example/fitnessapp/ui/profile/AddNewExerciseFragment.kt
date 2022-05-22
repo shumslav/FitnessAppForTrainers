@@ -74,18 +74,17 @@ class AddNewExerciseFragment : Fragment() {
         binding.addNewTrain.setOnClickListener {
             if (checkIsEmpty()) {
                 makeToast(requireContext(), "Заполните все поля")
-                return@setOnClickListener
-            }
+                return@setOnClickListener }
             val name = binding.name.text.toString()
             val group = binding.group.selectedItem as String
             val rep = if (binding.repetitions.selectedItem as String == "Минуты")
                 Calculation.SECONDS
-            else
-                Calculation.REPETITIONS
+            else Calculation.REPETITIONS
             val isHaveWeight = binding.isWeight.selectedItem as String != "Нету"
             val exercise = Exercise(group, name, rep, isHaveWeight)
-            val ref = Firebase.database.reference.child(NODE_USERS).child(client.login).child(NODE_EXERCISES)
-                .child(exercise.bodyPart)
+            val ref = Firebase.database.reference
+                .child(NODE_USERS).child(client.login)
+                .child(NODE_EXERCISES).child(exercise.bodyPart)
             ref.addListenerForSingleValueEvent(
                 object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
@@ -93,8 +92,7 @@ class AddNewExerciseFragment : Fragment() {
                             makeToast(requireContext(), "Имя занято")
                         else {
                             ref.child(exercise.name).setValue(exercise)
-                            requireActivity().onBackPressed()
-                        } }
+                            requireActivity().onBackPressed() } }
                     override fun onCancelled(error: DatabaseError) {} })
         }
         return binding.root

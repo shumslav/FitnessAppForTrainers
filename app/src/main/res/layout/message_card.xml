@@ -90,6 +90,7 @@
                     android:layout_height="wrap_content"
                     android:maxWidth="210dp"
                     android:textSize="16sp"
+                    android:gravity="end"
                     android:textColor="@color/black"
                     android:text=""
                     android:layout_marginEnd="10dp"/>

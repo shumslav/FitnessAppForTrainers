@@ -79,7 +79,8 @@ class TrainNoteFragment : Fragment() {
                 binding.exercisesRecycler.adapter?.notifyDataSetChanged()
             }
             binding.delete.setOnClickListener {
-                Firebase.database.reference.child(NODE_USERS).child(client.login)
+                Firebase.database.reference.child(NODE_USERS)
+                    .child(client.login)
                     .child(NODE_TRAIN_NOTES)
                     .child(date!!)
                     .child(id!!).removeValue()

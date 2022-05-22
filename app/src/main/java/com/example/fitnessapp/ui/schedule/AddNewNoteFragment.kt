@@ -269,8 +269,6 @@ class AddNewNoteFragment : Fragment() {
                         maxId + 1, date!!, viewModel.startTime, viewModel.endTime,
                         viewModel.selectedGroup.value!!, viewModel.addedExercises.value!!, binding.notes.text.toString())
                     ref.child("${maxId + 1}").setValue(trainNote)
-                    val viewModelSchedule = ViewModelProvider(requireActivity())[ScheduleViewModel::class.java]
-                    viewModelSchedule.getTrainNotes()
                     requireActivity().supportFragmentManager.popBackStack()
                 }
                 override fun onCancelled(error: DatabaseError) {} })

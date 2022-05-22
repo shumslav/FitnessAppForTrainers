@@ -43,7 +43,8 @@ class ClientsAdapter(val viewmodel: ClientsViewModel, lifecycleOwner: LifecycleO
             holder.binding.card.setOnClickListener {
                 currentClient.login = client.login
                 currentClient.name = client.name
-                activity.startActivity(Intent(activity,MainActivity::class.java))
+                activity.startActivity(
+                    Intent(activity,MainActivity::class.java))
             }
         }
 
