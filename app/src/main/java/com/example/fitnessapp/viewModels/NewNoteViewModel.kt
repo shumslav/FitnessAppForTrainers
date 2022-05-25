@@ -4,19 +4,32 @@ import NODE_EXERCISES
 import NODE_GROUP_MUSCLES
 import NODE_USERS
 import android.app.Application
+import android.app.Notification
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.example.fitnessapp.models.AddedExercise
 import com.example.fitnessapp.models.CurrentClient
 import com.example.fitnessapp.models.Exercise
+import com.example.fitnessapp.notifications.PushNotification
+import com.example.fitnessapp.notifications.RetrofitInstance
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.google.gson.Gson
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import java.lang.Exception
 import java.util.*
 
 class NewNoteViewModel(private val myApplication: Application) : AndroidViewModel(myApplication) {
+
+    private companion object{
+        final val TAG = "NewNoteViewModel"
+    }
 
     val addedExercises: MutableLiveData<MutableList<AddedExercise>> = MutableLiveData()
     val isAddingNewExercise: MutableLiveData<Boolean> = MutableLiveData()
@@ -92,5 +105,14 @@ class NewNoteViewModel(private val myApplication: Application) : AndroidViewMode
                     override fun onCancelled(error: DatabaseError) {}
                 }
             )
+    }
+
+    fun sendNotificationNewNote(notification: PushNotification) = CoroutineScope(Dispatchers.IO).launch {
+        try{
+            val response = RetrofitInstance.api.postNotification(notification)
+        }
+        catch (e: Exception){
+            Log.e(TAG,e.toString())
+        }
     }
 }

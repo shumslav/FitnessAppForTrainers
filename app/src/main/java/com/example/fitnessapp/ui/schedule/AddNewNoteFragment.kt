@@ -22,6 +22,8 @@ import com.example.fitnessapp.adapters.AddedExercisesAdapter
 import com.example.fitnessapp.enums.Calculation
 import com.example.fitnessapp.models.Exercise
 import com.example.fitnessapp.models.TrainNote
+import com.example.fitnessapp.notifications.NotificationDate
+import com.example.fitnessapp.notifications.PushNotification
 import com.example.fitnessapp.viewModels.NewNoteViewModel
 import com.example.fitnessapp.viewModels.ScheduleViewModel
 import com.google.android.material.navigation.NavigationBarView
@@ -251,11 +253,14 @@ class AddNewNoteFragment : Fragment() {
     fun addNote() {
         if (viewModel.startTime.isEmpty() || viewModel.endTime.isEmpty()) {
             makeToast(requireContext(), "Не указано время")
-            return }
+            return
+        }
         if (viewModel.addedExercises.value.isNullOrEmpty()) {
             makeToast(requireContext(), "Не добавлено ни одного упражнения")
-            return }
-        val ref = Firebase.database.reference.child(NODE_USERS).child(viewModel.user.login).child(NODE_TRAIN_NOTES).child(date!!)
+            return
+        }
+        val ref = Firebase.database.reference.child(NODE_USERS).child(viewModel.user.login)
+            .child(NODE_TRAIN_NOTES).child(date!!)
         ref.addListenerForSingleValueEvent(
             object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
@@ -266,12 +271,34 @@ class AddNewNoteFragment : Fragment() {
                             if (maxId < id) maxId = id
                     }
                     val trainNote = TrainNote(
-                        maxId + 1, date!!, viewModel.startTime, viewModel.endTime,
-                        viewModel.selectedGroup.value!!, viewModel.addedExercises.value!!, binding.notes.text.toString())
+                        maxId + 1,
+                        date!!,
+                        viewModel.startTime,
+                        viewModel.endTime,
+                        viewModel.selectedGroup.value!!,
+                        viewModel.addedExercises.value!!,
+                        binding.notes.text.toString()
+                    )
                     ref.child("${maxId + 1}").setValue(trainNote)
+                    viewModel.sendNotificationNewNote(
+                        PushNotification(
+                            NotificationDate(
+                                "Новая тренировка",
+                                "Тренер поставил вам новую тренировку\n${
+                                    date!!.replace(
+                                        ":",
+                                        "."
+                                    )
+                                }\nс ${viewModel.startTime} до ${viewModel.endTime}"
+                            ),
+                            "/topics/${viewModel.user.login}"
+                        )
+                    )
                     requireActivity().supportFragmentManager.popBackStack()
                 }
-                override fun onCancelled(error: DatabaseError) {} })
+
+                override fun onCancelled(error: DatabaseError) {}
+            })
     }
 
     companion object {

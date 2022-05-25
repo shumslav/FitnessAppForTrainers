@@ -9,13 +9,22 @@ import androidx.lifecycle.MutableLiveData
 import com.example.fitnessapp.models.CurrentClient
 import com.example.fitnessapp.models.CurrentUser
 import com.example.fitnessapp.models.Message
+import com.example.fitnessapp.notifications.NotificationDate
+import com.example.fitnessapp.notifications.PushNotification
+import com.example.fitnessapp.notifications.RetrofitInstance
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import java.lang.Exception
 import java.util.*
+
+private const val TAG = "ChatViewModel"
 
 class ChatViewModel(private val myApplication: Application) : AndroidViewModel(myApplication) {
     val messages: MutableLiveData<MutableList<Message>> = MutableLiveData()
@@ -52,6 +61,16 @@ class ChatViewModel(private val myApplication: Application) : AndroidViewModel(m
 
         Firebase.database.reference.child(NODE_USERS).child(currentClient.login)
             .child(NODE_MESSAGES).push().setValue(message)
+
+        sendNotificationNewMessage(
+            PushNotification(
+                NotificationDate(
+                    "Новое сообщение от тренера",
+                    "Тренер отправил вам новое сообщение"
+                ),
+                "/topics/${currentClient.login}"
+            )
+        )
     }
 
     private fun getDate(calendar: Calendar): String {
@@ -84,5 +103,14 @@ class ChatViewModel(private val myApplication: Application) : AndroidViewModel(m
             "${calendar.get(Calendar.MINUTE)}"
 
         return "${hours}:${minutes}"
+    }
+
+    fun sendNotificationNewMessage(notification: PushNotification) = CoroutineScope(Dispatchers.IO).launch {
+        try{
+            val response = RetrofitInstance.api.postNotification(notification)
+        }
+        catch (e: Exception){
+            Log.e(TAG,e.toString())
+        }
     }
 }

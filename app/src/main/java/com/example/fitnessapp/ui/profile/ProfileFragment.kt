@@ -12,6 +12,7 @@ import com.example.fitnessapp.models.CurrentClient
 import com.example.fitnessapp.models.CurrentUser
 import com.example.fitnessapp.ui.login.ChooseClientActivity
 import com.example.fitnessapp.ui.login.EnterActivity
+import com.google.firebase.messaging.FirebaseMessaging
 
 
 class ProfileFragment : Fragment() {
@@ -36,6 +37,7 @@ class ProfileFragment : Fragment() {
     fun logout() {
         client.logout()
         user.logout()
+        FirebaseMessaging.getInstance().unsubscribeFromTopic(user.login)
         requireActivity().startActivity(Intent(requireContext(), EnterActivity::class.java))
         requireActivity().finish()
     }
