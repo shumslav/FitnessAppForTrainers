@@ -76,6 +76,12 @@ class TrainNoteFragment : Fragment() {
                 else{
                     binding.notesForm.visibility = View.GONE
                 }
+                if (it.review=="")
+                    binding.reviewForm.visibility = View.GONE
+                else{
+                    binding.review.text = it.review
+                    binding.reviewForm.visibility = View.VISIBLE
+                }
                 binding.exercisesRecycler.adapter?.notifyDataSetChanged()
             }
             binding.delete.setOnClickListener {

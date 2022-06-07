@@ -2,6 +2,7 @@ package com.example.fitnessapp.ui.schedule
 
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
+import android.graphics.Paint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -51,6 +52,8 @@ class ScheduleFragment : Fragment() {
         binding.recyclerDays.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerNotes.adapter = TrainNotesAdapter(viewModel,viewLifecycleOwner, this)
         binding.recyclerNotes.layoutManager = LinearLayoutManager(requireContext())
+        binding.startDate.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+        binding.endDate.paintFlags = Paint.UNDERLINE_TEXT_FLAG
         binding.fragment = this
 
         viewModel.isAddNoticeVisible.observe(viewLifecycleOwner) { t ->

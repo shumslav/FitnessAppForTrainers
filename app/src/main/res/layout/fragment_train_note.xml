@@ -119,6 +119,32 @@
                         android:background="@color/white"/>
                 </LinearLayout>
 
+                <LinearLayout
+                    android:id="@+id/review_form"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:layout_gravity="center_horizontal"
+                        android:text="Отзыв клиента"
+                        android:textSize="30sp"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/review"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="17sp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginTop="10dp" />
+                </LinearLayout>
+
                 <ImageView
                     android:id="@+id/delete"
                     android:layout_width="80dp"
