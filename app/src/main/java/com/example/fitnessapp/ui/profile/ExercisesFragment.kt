@@ -60,8 +60,9 @@ class ExercisesFragment : Fragment() {
         }
 
         binding.addExercise.setOnClickListener {
-            requireActivity().supportFragmentManager.beginTransaction()
-                .add(R.id.container_fragment_profile, AddNewExerciseFragment())
+            childFragmentManager.beginTransaction()
+                .add(R.id.container_fragment_exercises, AddNewExerciseFragment())
+                .addToBackStack("new_exercise")
                 .commit()
         }
 

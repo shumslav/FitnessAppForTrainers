@@ -49,7 +49,7 @@
                 android:id="@+id/status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="5dp"/>
 
@@ -65,8 +65,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{trainNote.duration}"
                 android:layout_below="@id/name"
+                android:text="@{trainNote.duration}"
                 android:textSize="20sp" />
         </RelativeLayout>
 

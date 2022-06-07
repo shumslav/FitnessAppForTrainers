@@ -22,9 +22,9 @@ data class TrainNote(
                 val date1: Date = df.parse(startTime)!!
                 val date2: Date = df.parse(finishTime)!!
                 val diff: Long = (date2.time - date1.time) / 1000
-                "${diff / 60} min"
+                "${diff / 60} мин"
             } catch (e: ParseException) {
-                "0 min"
+                "0 мин"
             }
         }
     val dateWithDot: String

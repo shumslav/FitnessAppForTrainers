@@ -51,7 +51,7 @@
                     android:layout_height="wrap_content"
                     android:text="@{client.login}"
                     android:textColor="@color/black"
-                    android:textSize="30sp" />
+                    android:textSize="27sp" />
 
             </LinearLayout>
         </LinearLayout>
