@@ -59,14 +59,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Белки г."
-                        android:textSize="28sp"
+                        android:textSize="26sp"
                         android:textColor="#1E0297"/>
                     <EditText
                         android:id="@+id/protein"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:textSize="30sp"
+                        android:textSize="26sp"
                         android:inputType="number"
                         android:gravity="center"
                         android:backgroundTint="#1E0297"
@@ -77,20 +77,19 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
                     android:layout_marginStart="8dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Жиры г."
-                        android:textSize="28sp"
+                        android:textSize="26sp"
                         android:textColor="#1E0297"/>
                     <EditText
                         android:id="@+id/fats"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:textSize="30sp"
+                        android:textSize="26sp"
                         android:gravity="center"
                         android:inputType="number"
                         android:backgroundTint="#1E0297"
@@ -101,20 +100,19 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
                     android:layout_marginStart="8dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Углеводы г."
-                        android:textSize="28sp"
+                        android:textSize="26sp"
                         android:textColor="#1E0297"/>
                     <EditText
                         android:id="@+id/carbohydrates"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:textSize="30sp"
+                        android:textSize="26sp"
                         android:gravity="center"
                         android:inputType="number"
                         android:backgroundTint="#1E0297"
@@ -125,20 +123,19 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
                     android:layout_marginStart="8dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Калории ккал."
-                        android:textSize="28sp"
+                        android:textSize="26sp"
                         android:textColor="#1E0297"/>
                     <EditText
                         android:id="@+id/calories"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:textSize="30sp"
+                        android:textSize="26sp"
                         android:gravity="center"
                         android:backgroundTint="#1E0297"
                         android:textColor="@color/black"

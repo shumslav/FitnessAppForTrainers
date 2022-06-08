@@ -14,7 +14,7 @@ data class TrainNote(
     var exercises: MutableList<AddedExercise> = mutableListOf(),
     var notes: String = "",
     var isCompleted: Boolean = false,
-    var review:String = ""
+    var review: String = ""
 ) {
     val duration: String
         get() {
@@ -23,7 +23,10 @@ data class TrainNote(
                 val date1: Date = df.parse(startTime)!!
                 val date2: Date = df.parse(finishTime)!!
                 val diff: Long = (date2.time - date1.time) / 1000
-                "${diff / 60} мин"
+                if (diff < 0)
+                    "${1440 + (diff / 60)} мин"
+                else
+                    "${diff / 60} мин"
             } catch (e: ParseException) {
                 "0 мин"
             }

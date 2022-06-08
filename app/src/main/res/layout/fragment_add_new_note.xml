@@ -76,6 +76,7 @@
                                 android:layout_marginStart="27dp"
                                 app:cardCornerRadius="35dp"
                                 app:strokeColor="#5267D1"
+                                android:elevation="3dp"
                                 app:strokeWidth="2dp">
 
                                 <TextView
@@ -107,6 +108,7 @@
                                 android:layout_centerVertical="true"
                                 android:layout_marginEnd="27dp"
                                 app:cardCornerRadius="35dp"
+                                android:elevation="3dp"
                                 app:strokeColor="#5267D1"
                                 app:strokeWidth="2dp">
 
@@ -142,6 +144,7 @@
                             android:layout_marginStart="13dp"
                             android:layout_marginTop="13dp"
                             app:cardCornerRadius="35dp"
+                            android:elevation="3dp"
                             app:strokeColor="#5267D1"
                             app:strokeWidth="2dp">
 
@@ -308,6 +311,7 @@
                             android:layout_marginBottom="10dp"
                             app:cardCornerRadius="35dp"
                             app:strokeColor="#5267D1"
+                            android:elevation="3dp"
                             app:strokeWidth="2dp">
 
                             <EditText

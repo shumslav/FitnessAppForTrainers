@@ -202,14 +202,14 @@ class AddNewNoteFragment : Fragment() {
                     AddedExercise(
                         selectedExercise.name,
                         "${binding.repetitions.text} раз",
-                        "${binding.rounds.text} сет.",
+                        "${binding.rounds.text} подх.",
                         "${binding.weight.text} кг"
                     )
                 else
                     AddedExercise(
                         selectedExercise.name,
                         "${binding.repetitions.text} мин.",
-                        "${binding.rounds.text} сет.",
+                        "${binding.rounds.text} подх.",
                         "${binding.weight.text} кг"
                     )
             else
@@ -217,14 +217,14 @@ class AddNewNoteFragment : Fragment() {
                     AddedExercise(
                         selectedExercise.name,
                         "${binding.repetitions.text} раз",
-                        "${binding.rounds.text} сет.",
+                        "${binding.rounds.text} подх.",
                         null
                     )
                 else
                     AddedExercise(
                         selectedExercise.name,
                         "${binding.repetitions.text} мин.",
-                        "${binding.rounds.text} сет.",
+                        "${binding.rounds.text} подх.",
                         null
                     )
         val exercises = mutableListOf<AddedExercise>()

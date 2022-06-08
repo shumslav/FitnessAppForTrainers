@@ -61,7 +61,7 @@ class AddNewExerciseFragment : Fragment() {
             ArrayAdapter(
                 requireContext(),
                 android.R.layout.simple_spinner_dropdown_item,
-                listOf("Есть", "Нету")
+                listOf("Есть", "Нет")
             )
 
         binding.repetitions.adapter =
@@ -80,7 +80,7 @@ class AddNewExerciseFragment : Fragment() {
             val rep = if (binding.repetitions.selectedItem as String == "Минуты")
                 Calculation.SECONDS
             else Calculation.REPETITIONS
-            val isHaveWeight = binding.isWeight.selectedItem as String != "Нету"
+            val isHaveWeight = binding.isWeight.selectedItem as String != "Нет"
             val exercise = Exercise(group, name, rep, isHaveWeight)
             val ref = Firebase.database.reference
                 .child(NODE_USERS).child(client.login)

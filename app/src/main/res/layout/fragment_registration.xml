@@ -54,7 +54,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="15dp"
                 android:minWidth="284dp"
-                app:cardElevation="3dp"
+                app:cardElevation="10dp"
                 app:cardCornerRadius="35dp">
 
                 <EditText
@@ -86,7 +86,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="15dp"
                 android:minWidth="284dp"
-                app:cardElevation="3dp"
+                app:cardElevation="10dp"
                 app:cardCornerRadius="35dp">
 
                 <EditText
@@ -120,7 +120,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="15dp"
                 android:minWidth="284dp"
-                app:cardElevation="3dp"
+                app:cardElevation="10dp"
                 app:cardCornerRadius="35dp">
 
                 <EditText
@@ -140,7 +140,7 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="35dp"
-                app:cardElevation="3dp"
+                app:cardElevation="10dp"
                 android:backgroundTint="#DA5F01"
                 app:cardCornerRadius="35dp">
 

@@ -14,17 +14,16 @@
         android:orientation="horizontal"
         android:layoutDirection="rtl">
 
-
         <TextView
-            android:id="@+id/repetitions"
+            android:id="@+id/weight"
             android:layout_width="60dp"
             android:layout_height="match_parent"
             android:textColor="@color/black"
             android:maxLines="1"
             android:textSize="16sp"
-            android:layout_marginStart="5dp"
             android:gravity="center"
-            android:text="@{addedExercise.repetitions}" />
+            android:layout_marginStart="5dp"
+            android:text="@{addedExercise.liftedWeight}" />
 
         <TextView
             android:id="@+id/rounds"
@@ -38,15 +37,15 @@
             android:text="@{addedExercise.rounds}"/>
 
         <TextView
-            android:id="@+id/weight"
+            android:id="@+id/repetitions"
             android:layout_width="60dp"
             android:layout_height="match_parent"
             android:textColor="@color/black"
             android:maxLines="1"
             android:textSize="16sp"
-            android:gravity="center"
             android:layout_marginStart="5dp"
-            android:text="@{addedExercise.liftedWeight}" />
+            android:gravity="center"
+            android:text="@{addedExercise.repetitions}" />
 
         <TextView
             android:id="@+id/name"
