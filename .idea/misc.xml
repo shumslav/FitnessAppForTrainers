@@ -3,7 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/drawable-v24/background_profile.xml" value="0.182" />
+        <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/drawable/backgorund_profile_clients.xml" value="0.182" />
         <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/drawable/background.xml" value="0.182" />
+        <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/drawable/background_profile.xml" value="0.182" />
+        <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/drawable/background_profile_exercises.xml" value="0.182" />
+        <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/drawable/background_profile_exit.xml" value="0.182" />
+        <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/drawable/background_profile_groups.xml" value="0.182" />
         <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/drawable/corner_schedule.xml" value="0.194" />
         <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/drawable/ic_add_notice.xml" value="0.2045" />
         <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/drawable/ic_arrow.xml" value="0.182" />
@@ -23,7 +29,7 @@
         <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/layout/background.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/layout/client_card.xml" value="0.25" />
         <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/layout/fragment_add_new_exercise.xml" value="0.16847826086956522" />
-        <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/layout/fragment_add_new_note.xml" value="0.16" />
+        <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/layout/fragment_add_new_note.xml" value="0.4083333333333333" />
         <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/layout/fragment_blank.xml" value="0.16847826086956522" />
         <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/layout/fragment_chat.xml" value="0.25" />
         <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/layout/fragment_exercises.xml" value="0.16847826086956522" />
@@ -36,8 +42,8 @@
         <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/layout/group_muscles_card.xml" value="0.25" />
         <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/layout/meal_card.xml" value="0.33" />
         <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/layout/message_card.xml" value="0.25" />
-        <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/layout/schedule_day_card.xml" value="0.33" />
-        <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/layout/schedule_note_card.xml" value="0.17527173913043478" />
+        <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/layout/schedule_day_card.xml" value="0.5" />
+        <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/layout/schedule_note_card.xml" value="0.25" />
         <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/layout/train_note_exercise_card.xml" value="0.16" />
         <entry key="..\:/Users/shums/AndroidStudioProjects/FitnessApp/app/src/main/res/menu/bottom_menu.xml" value="0.22" />
       </map>

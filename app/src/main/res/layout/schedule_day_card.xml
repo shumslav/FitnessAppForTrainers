@@ -13,7 +13,7 @@
         android:id="@+id/card_day"
         android:layout_width="110dp"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/day_card_back"
+        app:cardBackgroundColor="@color/white"
         android:layout_marginBottom="2dp"
         android:layout_marginEnd="2dp"
         app:cardCornerRadius="30dp"
@@ -29,8 +29,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:layout_marginTop="7dp"
                 android:text="@{calendarDay.russianMonth}"
-                android:textColor="@color/white"
+                android:textColor="#5267D1"
                 android:textSize="35sp" />
 
 
@@ -39,25 +40,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/month"
+                android:layout_marginTop="-11dp"
                 android:gravity="center"
                 android:text="@{calendarDay.day}"
-                android:textColor="@color/white"
+                android:textColor="#5267D1"
                 android:textSize="65sp" />
 
-            <RelativeLayout
+            <LinearLayout
                 android:id="@+id/trainNotes_form"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/day"
+                android:layout_marginTop="-5dp"
+                android:layout_marginBottom="6dp"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/completed_card"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginEnd="10dp"
                     android:backgroundTint="#4BDD00"
+                    android:layout_marginEnd="2dp"
+                    app:cardCornerRadius="360dp"
                     android:visibility="visible">
 
                     <TextView
@@ -75,8 +80,9 @@
                     android:id="@+id/uncompleted_card"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
                     android:backgroundTint="#D62A0C"
+                    android:layout_marginStart="2dp"
+                    app:cardCornerRadius="360dp"
                     android:visibility="visible">
 
                     <TextView
@@ -89,7 +95,7 @@
                         android:textSize="17sp"
                         android:textStyle="bold" />
                 </androidx.cardview.widget.CardView>
-            </RelativeLayout>
+            </LinearLayout>
 
         </RelativeLayout>
 

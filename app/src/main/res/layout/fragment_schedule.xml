@@ -28,7 +28,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#547a72">
+                android:background="#1E0297">
 
                 <TextView
                     android:id="@+id/start_date"
@@ -90,25 +90,23 @@
                     android:layout_height="70dp"
                     android:layout_below="@id/recycler_notes"
                     android:layout_toEndOf="@id/recycler_days"
-                    android:backgroundTint="#547a72"
+                    android:backgroundTint="#F4A457"
                     app:strokeColor="#9E9D9D"
                     app:cardElevation="5dp"
+                    app:cardCornerRadius="35dp"
                     app:strokeWidth="1dp">
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/ic_add_notice" />
+                        android:src="@drawable/ic_plus" />
 
                 </com.google.android.material.card.MaterialCardView>
-
-                <androidx.fragment.app.FragmentContainerView
-                    android:id="@+id/fragment_container"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
             </RelativeLayout>
-
         </LinearLayout>
-
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </FrameLayout>
 </layout>
