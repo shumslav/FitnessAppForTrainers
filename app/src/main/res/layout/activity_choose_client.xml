@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.login.ChooseClientActivity"
-        android:background="#efe6c4">
+        android:background="@drawable/background_profile">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -24,7 +24,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
-                    android:background="#547a72"
+                    android:background="#1E0297"
                     android:gravity="center"
                     android:text="Выбор клиента"
                     android:textColor="@color/white"
@@ -43,7 +43,7 @@
                     android:gravity="center"
                     android:layout_gravity="center_horizontal"
                     android:textSize="30sp"
-                    android:layout_marginTop="50dp"
+                    android:layout_marginTop="40dp"
                     android:text="Выйти"/>
 
             </LinearLayout>

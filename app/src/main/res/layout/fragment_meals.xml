@@ -10,7 +10,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#efe6c4">
+        android:background="@drawable/background_profile">
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -33,29 +33,34 @@
                     android:textColor="@color/black"
                     android:textSize="35dp" />
 
-                <FrameLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
                     android:layout_marginStart="13dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginBottom="30dp"
-                    android:background="@color/white">
+                    android:background="@color/white"
+                    app:cardCornerRadius="35dp"
+                    app:strokeColor="#5267D1"
+                    app:strokeWidth="2dp">
 
                     <Spinner
                         android:id="@+id/day_of_week"
-                        android:layout_width="300dp"
-                        android:layout_height="60dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="15dp"
                         android:backgroundTint="@color/black" />
-                </FrameLayout>
+                </com.google.android.material.card.MaterialCardView>
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Белки г."
-                        android:textSize="30sp"
-                        android:textColor="@color/black"/>
+                        android:textSize="28sp"
+                        android:textColor="#1E0297"/>
                     <EditText
                         android:id="@+id/protein"
                         android:layout_width="match_parent"
@@ -63,65 +68,80 @@
                         android:layout_marginStart="10dp"
                         android:textSize="30sp"
                         android:inputType="number"
+                        android:gravity="center"
+                        android:backgroundTint="#1E0297"
+                        android:textColor="@color/black"
                         android:layout_marginEnd="20dp"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp">
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="8dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Жиры г."
-                        android:textSize="30sp"
-                        android:textColor="@color/black"/>
+                        android:textSize="28sp"
+                        android:textColor="#1E0297"/>
                     <EditText
                         android:id="@+id/fats"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:textSize="30sp"
+                        android:gravity="center"
                         android:inputType="number"
+                        android:backgroundTint="#1E0297"
+                        android:textColor="@color/black"
                         android:layout_marginEnd="20dp"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp">
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="8dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Углеводы г."
-                        android:textSize="30sp"
-                        android:textColor="@color/black"/>
+                        android:textSize="28sp"
+                        android:textColor="#1E0297"/>
                     <EditText
                         android:id="@+id/carbohydrates"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:textSize="30sp"
+                        android:gravity="center"
                         android:inputType="number"
+                        android:backgroundTint="#1E0297"
+                        android:textColor="@color/black"
                         android:layout_marginEnd="20dp"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp">
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="8dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Калории ккал."
-                        android:textSize="30sp"
-                        android:textColor="@color/black"/>
+                        android:textSize="28sp"
+                        android:textColor="#1E0297"/>
                     <EditText
                         android:id="@+id/calories"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:textSize="30sp"
+                        android:gravity="center"
+                        android:backgroundTint="#1E0297"
+                        android:textColor="@color/black"
                         android:inputType="number"
                         android:layout_marginEnd="20dp"/>
                 </LinearLayout>
@@ -135,6 +155,16 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="30dp"/>
 
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="15dp"
+                    app:cardCornerRadius="35dp"
+                    app:strokeColor="#5267D1"
+                    app:strokeWidth="2dp">
+
                 <EditText
                     android:id="@+id/notes"
                     android:layout_width="match_parent"
@@ -142,17 +172,18 @@
                     android:background="@color/white"
                     android:textColor="@color/black"
                     android:textSize="17sp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginTop="15dp" />
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="8dp"/>
+                </com.google.android.material.card.MaterialCardView>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/meals"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:nestedScrollingEnabled="false"
-                    android:layout_marginTop="20dp"
-                    tools:listitem="@layout/meal_card" />
+                    android:layout_marginTop="20dp" />
 
                 <LinearLayout
                     android:id="@+id/new_meal_form"
@@ -161,11 +192,13 @@
                     android:visibility="gone"
                     android:orientation="vertical">
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#d4c7a8"
+                    android:backgroundTint="@color/white"
                     app:cardCornerRadius="8dp"
+                    app:strokeWidth="2dp"
+                    app:strokeColor="#DA5F01"
                     android:layout_marginStart="5dp"
                     android:layout_marginEnd="5dp"
                     android:layout_marginBottom="5dp">
@@ -186,6 +219,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Название:"
                                 android:textSize="25sp"
+                                android:textColor="@color/black"
                                 android:layout_marginEnd="8dp" />
 
                             <EditText
@@ -194,6 +228,8 @@
                                 android:gravity="center"
                                 android:layout_height="wrap_content"
                                 android:text=""
+                                android:textColor="@color/black"
+                                android:backgroundTint="@color/black"
                                 android:textSize="25sp" />
                         </LinearLayout>
 
@@ -207,18 +243,22 @@
                                 android:layout_height="wrap_content"
                                 android:text="Время приема:"
                                 android:textSize="25sp"
+                                android:textColor="@color/black"
                                 android:layout_marginEnd="8dp" />
 
                             <RelativeLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content">
-                            <EditText
-                                android:id="@+id/time"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:focusable="false"
-                                android:textSize="27sp" />
+
+                                <EditText
+                                    android:id="@+id/time"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:backgroundTint="@color/black"
+                                    android:focusable="false"
+                                    android:gravity="center"
+                                    android:textColor="@color/black"
+                                    android:textSize="27sp" />
                             </RelativeLayout>
                         </LinearLayout>
 
@@ -228,18 +268,22 @@
                             android:text="План приема"
                             android:gravity="center"
                             android:textSize="25sp"
+                            android:textColor="@color/black"
                             android:layout_marginTop="20dp"/>
                         <EditText
                             android:id="@+id/plan_meal"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textSize="20sp"
+                            android:textColor="@color/black"
+                            android:backgroundTint="@color/black"
                             android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
                             android:text=""/>
                     </LinearLayout>
 
 
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -270,7 +314,7 @@
                     android:id="@+id/add_meal"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
-                    android:backgroundTint="#547a72"
+                    android:backgroundTint="#1E0297"
                     app:strokeColor="#9E9D9D"
                     app:strokeWidth="1dp">
 
